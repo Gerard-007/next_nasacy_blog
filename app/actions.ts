@@ -20,7 +20,7 @@ export async function blogCreateSubmission(formData: FormData) {
         throw new Error("All fields are required to create a blog post.");
     }
 
-    const data = await prisma.blogPost.create({
+    await prisma.blogPost.create({
         data: {
             title: title,
             content: content,
