@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 
+export const revlidate = 60;
+
 async function getData(id: string) {
     await new Promise((resolve) => setTimeout(resolve, 2000));
 
