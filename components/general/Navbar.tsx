@@ -1,13 +1,13 @@
 import Link from "next/link";
 import {buttonVariants } from "../ui/button";
 import {RegisterLink, LoginLink, LogoutLink} from "@kinde-oss/kinde-auth-nextjs/components";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import ModeToggle from "./ModeToggle";
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
 
-export async function Navbar() {
-    const {getUser} = getKindeServerSession();
-    const user = await getUser();
+export function Navbar() {
+    const {getUser} = useKindeBrowserClient();
+    const user = getUser();
 
     return (
         <nav className="py-6 px-6 flex items-center justify-between bg-gray-800 mt-6 rounded-lg">
