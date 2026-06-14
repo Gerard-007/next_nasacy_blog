@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>About Us | InsightHub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-on-surface": "#f2effb",
+                    "on-surface": "#1b1b23",
+                    "secondary-container": "#6df5e1",
+                    "on-surface-variant": "#464554",
+                    "on-secondary-fixed-variant": "#005048",
+                    "on-secondary-container": "#006f64",
+                    "on-primary": "#ffffff",
+                    "secondary": "#006b5f",
+                    "inverse-surface": "#303038",
+                    "primary-fixed-dim": "#c0c1ff",
+                    "surface-container": "#efecf8",
+                    "on-primary-fixed-variant": "#2f2ebe",
+                    "error": "#ba1a1a",
+                    "on-primary-container": "#fffbff",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#fcf8ff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdcc5",
+                    "outline": "#767586",
+                    "surface-container-low": "#f5f2fe",
+                    "on-tertiary-fixed-variant": "#703700",
+                    "secondary-fixed": "#71f8e4",
+                    "on-background": "#1b1b23",
+                    "tertiary-container": "#b55d00",
+                    "surface-variant": "#e4e1ed",
+                    "surface-container-high": "#e9e6f3",
+                    "surface-bright": "#fcf8ff",
+                    "primary-container": "#6063ee",
+                    "on-tertiary-fixed": "#301400",
+                    "surface-dim": "#dbd8e4",
+                    "on-secondary": "#ffffff",
+                    "background": "#fcf8ff",
+                    "outline-variant": "#c7c4d7",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#c0c1ff",
+                    "primary-fixed": "#e1e0ff",
+                    "tertiary-fixed-dim": "#ffb783",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#494bd6",
+                    "on-secondary-fixed": "#00201c",
+                    "on-primary-fixed": "#07006c",
+                    "primary": "#4648d4",
+                    "surface-container-highest": "#e4e1ed",
+                    "tertiary": "#904900",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#4fdbc8",
+                    "on-tertiary-container": "#fffbff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "content-max": "720px",
+                    "margin-mobile": "20px",
+                    "unit": "8px",
+                    "margin-desktop": "48px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "caption": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-lg": ["20px", {"lineHeight": "1.75", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "caption": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "display-lg-mobile": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "headline-md": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-border {
+            border-bottom: 2px solid #4648d4;
+        }
+        .text-balance {
+            text-wrap: balance;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm transition-all duration-300">
+<div class="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-headline-sm text-headline-sm font-bold text-primary tracking-tight" href="#">InsightHub</a>
+<div class="hidden md:flex gap-6 items-center">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Discover</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Writers</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Topics</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden sm:block text-on-surface-variant hover:text-primary font-label-md text-label-md transition-colors active:scale-95">Sign In</button>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary/90 transition-transform active:scale-95 shadow-md">Get Started</button>
+</div>
+</div>
+</nav>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative overflow-hidden py-24 md:py-32">
+<div class="absolute inset-0 z-0">
+
+</div>
+<div class="relative z-10 max-w-container-max mx-auto px-gutter text-center">
+<div class="inline-flex items-center px-4 py-1.5 rounded-full bg-secondary-container text-on-secondary-container font-label-md text-label-md mb-8 animate-fade-in">
+                    Our Mission
+                </div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-balance mb-6 max-w-4xl mx-auto">
+                    InsightHub: Empowering the thinkers who <span class="text-primary">define tomorrow.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                    A platform built for depth, where precision-crafted content meets a community of curious minds.
+                </p>
+</div>
+</section>
+<!-- Our Story Section -->
+<section class="py-20 bg-surface-container-lowest">
+<div class="max-w-content-max mx-auto px-gutter">
+<h2 class="font-headline-md text-headline-md mb-8 text-center">Our Story</h2>
+<div class="space-y-6 text-on-surface-variant">
+<p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+                        InsightHub began with a simple observation: the digital landscape was becoming increasingly fragmented, favoring rapid consumption over meaningful engagement. We envisioned a sanctuary—a space where the noise of the modern world could be silenced in favor of deep, intellectual exploration.
+                    </p>
+<p class="font-body-md text-body-md leading-relaxed">
+                        Founded by a collective of journalists, technologists, and researchers, we sought to return the focus to the written word. We believe that true insight requires time, patience, and a commitment to nuance. Our platform is not just a hosting service; it is a meticulously designed environment tailored for the high-end blogging experience.
+                    </p>
+<div class="py-12">
+<div class="aspect-video w-full rounded-xl overflow-hidden shadow-lg border border-outline-variant/20">
+<img class="w-full h-full object-cover" data-alt="A bright, minimalist office space with floor-to-ceiling windows overlooking a serene garden. The interior is filled with soft natural light, featuring elegant light wood furniture, pristine white walls, and a few healthy green plants. The atmosphere is professional, tranquil, and reflects a high-end, intellectual brand identity focused on clarity and deep focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBosGsYDSy_YV7UU6Mt_No1YvTyfXYQ-qRUC7KD0iFcvUVhIE6n9ECzIRJGHHYeNS0G5lm12UL1tJfoQPfC4yHwv6_mf__I2yihqQrNrhmObyRmXFoN2xK1YaNLNnajOTHD4sqIUTWu4thEzppuyLGhoYOPg8xlZbuE1gN97QwG22oMVLBWs_kZLJOP8DXcmEk-MQHELNb9f8y94Djb7HpdFdNGateENPpG2P1MTqwvlMgcuK5jU860Cw"/>
+</div>
+</div>
+<p class="font-body-md text-body-md leading-relaxed">
+                        Today, InsightHub serves as the premier destination for thought leaders and industry experts. We provide the tools for creators to tell their stories without compromise, and for readers to discover ideas that genuinely matter.
+                    </p>
+</div>
+</div>
+</section>
+<!-- Our Values Section -->
+<section class="py-24 bg-surface">
+<div class="max-w-container-max mx-auto px-gutter">
+<div class="text-center mb-16">
+<h2 class="font-headline-md text-headline-md">Our Values</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2">The principles that guide every decision we make.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Value 1 -->
+<div class="p-8 rounded-xl bg-surface-container-low border border-outline-variant/20 hover:shadow-lg transition-shadow duration-300">
+<div class="w-12 h-12 rounded-lg bg-primary-container/10 flex items-center justify-center text-primary mb-6">
+<span class="material-symbols-outlined text-3xl">verified</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4">Quality over Quantity</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            We prioritize substantial, well-researched pieces that offer lasting value over fleeting viral trends.
+                        </p>
+</div>
+<!-- Value 2 -->
+<div class="p-8 rounded-xl bg-surface-container-low border border-outline-variant/20 hover:shadow-lg transition-shadow duration-300">
+<div class="w-12 h-12 rounded-lg bg-secondary-container/10 flex items-center justify-center text-secondary mb-6">
+<span class="material-symbols-outlined text-3xl">record_voice_over</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4">Authentic Voices</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            We champion diverse perspectives and original thought, providing a stage for those with unique expertise.
+                        </p>
+</div>
+<!-- Value 3 -->
+<div class="p-8 rounded-xl bg-surface-container-low border border-outline-variant/20 hover:shadow-lg transition-shadow duration-300">
+<div class="w-12 h-12 rounded-lg bg-tertiary-container/10 flex items-center justify-center text-tertiary mb-6">
+<span class="material-symbols-outlined text-3xl">explore</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4">Deep Exploration</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                            We encourage rigorous inquiry and the courage to tackle complex subjects that require deep attention.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Team Section -->
+<section class="py-24 bg-surface-container-low">
+<div class="max-w-container-max mx-auto px-gutter text-center">
+<h2 class="font-headline-md text-headline-md mb-16">Meet the Team</h2>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
+<!-- Member 1 -->
+<div class="group">
+<div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden border-4 border-surface shadow-md mb-6 transition-transform group-hover:scale-105">
+<img class="w-full h-full object-cover" data-alt="A close-up professional portrait of Alex Rivera, a man with a friendly expression and creative energy. He is photographed in a minimalist studio setting with soft side-lighting, against a neutral gray background. The aesthetic is clean, professional, and reflects high-end editorial photography for a leadership profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfpXtgw-s6gTqs8QOsTRr357KR1n0-amvmMfNCbT015XV_98U4VjNxmeI_5alwnP76pEDOiGk3ysRSJVbVCCLG3Scnzld4G0i6NxoQydf9_lAy7aqhYafQluIUr8o977re7xOf1U-67jMalCG8JHtDm7aYaZNgrK0t-R0R-aVVB9uRFJOndD6M1vr1ImejG4oJfG1m2_K3i0HUgZQNLLOXA6uwYpaZqc1ZI5s0IGpRquIPf8WmgUh3Vg"/>
+</div>
+<h4 class="font-headline-sm text-headline-sm">Alex Rivera</h4>
+<p class="font-label-md text-label-md text-primary mt-1">Lead Designer</p>
+</div>
+<!-- Member 2 -->
+<div class="group">
+<div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden border-4 border-surface shadow-md mb-6 transition-transform group-hover:scale-105">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of Sarah Jenkins, a woman with a confident and focused gaze, appearing poised and intellectual. She is in a bright, modern indoor setting with blurred architectural elements in the background. The lighting is flattering and high-key, maintaining a professional and reliable brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6N_BXMo11NlbsZ9YpIcRaREg7_2wsI2NoMkuNpn1iLl3RSzdHUhUl9x1tdrlggfRes-BMecGwzuo8l6Q3v6xf5zHQNC-egoFW1SxBthgXf_K6O7qChIziIEsckthTLHaRKCSUHGpzAH7CZnby3lhIQpn3bw9VhHiealXEoyJzUdXdG9utdGY_qq_u2aNo8czO7KblZnd2fGc0dQ_Q2AYMjsI6q2nvoT-ubUIIbJWedPMGC3Yc_A38ww"/>
+</div>
+<h4 class="font-headline-sm text-headline-sm">Sarah Jenkins</h4>
+<p class="font-label-md text-label-md text-primary mt-1">Editorial Director</p>
+</div>
+<!-- Member 3 -->
+<div class="group">
+<div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden border-4 border-surface shadow-md mb-6 transition-transform group-hover:scale-105">
+<img class="w-full h-full object-cover" data-alt="A professional portrait of a male tech executive in his late 30s. He is wearing a minimalist dark shirt, standing in a workspace with clean lines and soft bokeh lighting. The overall mood is dependable and visionary, captured with professional camera equipment to ensure high-fidelity detail and a premium feel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3PHiai3IO_-CvgPFvGF-njx_IbrnQA5xwBs0Vl7p_bIrORYmNOsjKArP0_Xd2BxRCr0bII8vQx1JGe059E5xAtGPYeb9rox7FYBzMVUSZvpoNxkaA7VyBOMbYt8z0GNNdkyQAxWd_NkZQjK20SwRWIQVm6JNKdpjW8R067kTmnhMOATFTql7wrnXJ-9tKGXnXdRMKldMgXm4fkThvFnPB6hPLT5DFJTbXFgOOj0xJOfsneotZYl3WZQ"/>
+</div>
+<h4 class="font-headline-sm text-headline-sm">David Chen</h4>
+<p class="font-label-md text-label-md text-primary mt-1">CTO</p>
+</div>
+<!-- Member 4 -->
+<div class="group">
+<div class="w-32 h-32 md:w-40 md:h-40 mx-auto rounded-full overflow-hidden border-4 border-surface shadow-md mb-6 transition-transform group-hover:scale-105">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a woman in a creative leadership role. She has a warm, intelligent expression and is wearing modern attire. The background is a soft, out-of-focus modern gallery space. The photography style is minimalist, high-end, and perfectly aligned with a professional blogging platform's visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKWYFBXMDac434imIFFW_9i5pjd_-a2WiGLSJLwXaM_ITp-F2pNyhcQBTtJH-xD6FEJt2vqJXg5Y8vxYKHfs79n8cu-lYG9uzoxQswq6aJ7f22yZv-RL1r_ZuBWgr_ovxsoPpJJPhtxdpqncis19DIq_K5Ihginm8dTv3tIuKBBxfO10h661hzGTz3tacAYG6jAujFMqVQ3iF5Ko8MFCL6EPLWGemtiOjKbQnDOKwoUaYxPz2HwOhCMQ"/>
+</div>
+<h4 class="font-headline-sm text-headline-sm">Maya Patel</h4>
+<p class="font-label-md text-label-md text-primary mt-1">Head of Strategy</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Join Us CTA Section -->
+<section class="py-24 bg-primary text-on-primary">
+<div class="max-w-container-max mx-auto px-gutter text-center relative overflow-hidden">
+<div class="relative z-10">
+<h2 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg mb-6">Ready to join the conversation?</h2>
+<p class="font-body-lg text-body-lg mb-10 max-w-2xl mx-auto opacity-90">
+                        Whether you're a writer with a story to tell or a reader seeking deeper understanding, there's a place for you in our community.
+                    </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="bg-surface text-primary px-8 py-4 rounded-full font-label-md text-label-md hover:bg-surface-dim transition-all active:scale-95 shadow-xl">Become a Writer</button>
+<button class="border-2 border-on-primary text-on-primary px-8 py-4 rounded-full font-label-md text-label-md hover:bg-on-primary hover:text-primary transition-all active:scale-95">Explore Topics</button>
+</div>
+</div>
+<!-- Background decorative element -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant/20">
+<div class="max-w-container-max mx-auto px-gutter py-16 grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="md:col-span-1">
+<a class="font-headline-sm text-headline-sm font-bold text-on-surface mb-6 block" href="#">InsightHub</a>
+<p class="text-on-surface-variant font-caption text-caption">The sanctuary for professional writers and thoughtful readers.</p>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface mb-4">Platform</h5>
+<ul class="space-y-3">
+<li><a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Discover</a></li>
+<li><a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Writers</a></li>
+<li><a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Topics</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface mb-4">Company</h5>
+<ul class="space-y-3">
+<li><a class="font-caption text-caption text-primary underline" href="#">About</a></li>
+<li><a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a></li>
+<li><a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface mb-4">Legal</h5>
+<ul class="space-y-3">
+<li><a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a></li>
+<li><a class="font-caption text-caption text-on-surface-variant hover:text-primary transition-colors" href="#">Terms</a></li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter py-8 border-t border-outline-variant/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-caption text-caption text-on-surface-variant">© 2024 InsightHub. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="text-on-surface-variant hover:text-primary" href="#"><span class="material-symbols-outlined">share</span></a>
+<a class="text-on-surface-variant hover:text-primary" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-surface-variant hover:text-primary" href="#"><span class="material-symbols-outlined">rss_feed</span></a>
+</div>
+</div>
+</footer>
+<!-- Bottom Nav for Mobile -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface border-t border-outline-variant/30 shadow-lg flex justify-around items-center py-3 pb-safe px-4">
+<a class="text-on-surface-variant flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="text-on-surface-variant flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-md text-label-md">Search</span>
+</a>
+<a class="text-on-surface-variant flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined">bookmarks</span>
+<span class="font-label-md text-label-md">Library</span>
+</a>
+<a class="text-primary flex flex-col items-center gap-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<script>
+        // Interactive Navbar Background
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 20) {
+                nav.classList.add('shadow-md');
+                nav.classList.remove('shadow-sm');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.add('shadow-sm');
+            }
+        });
+
+        // Simple observer for fade-in elements
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        // Add some basic reveal classes
+        document.querySelectorAll('section > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body></html>

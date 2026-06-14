@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alex Rivera - InsightHub Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "primary-fixed": "#e1e0ff",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#6df5e1",
+                      "surface-bright": "#fcf8ff",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#2f2ebe",
+                      "inverse-on-surface": "#f2effb",
+                      "on-secondary-container": "#006f64",
+                      "error": "#ba1a1a",
+                      "primary-container": "#6063ee",
+                      "secondary": "#006b5f",
+                      "tertiary-container": "#b55d00",
+                      "tertiary": "#904900",
+                      "surface-container": "#efecf8",
+                      "on-surface-variant": "#464554",
+                      "surface": "#fcf8ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-highest": "#e4e1ed",
+                      "outline": "#767586",
+                      "secondary-fixed": "#71f8e4",
+                      "on-background": "#1b1b23",
+                      "tertiary-fixed": "#ffdcc5",
+                      "secondary-fixed-dim": "#4fdbc8",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#fffbff",
+                      "background": "#fcf8ff",
+                      "surface-tint": "#494bd6",
+                      "on-surface": "#1b1b23",
+                      "inverse-surface": "#303038",
+                      "error-container": "#ffdad6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#703700",
+                      "on-tertiary-container": "#fffbff",
+                      "on-error-container": "#93000a",
+                      "on-secondary-fixed": "#00201c",
+                      "surface-container-low": "#f5f2fe",
+                      "surface-dim": "#dbd8e4",
+                      "outline-variant": "#c7c4d7",
+                      "primary-fixed-dim": "#c0c1ff",
+                      "on-secondary-fixed-variant": "#005048",
+                      "on-primary-fixed": "#07006c",
+                      "surface-container-high": "#e9e6f3",
+                      "primary": "#4648d4",
+                      "on-error": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb783",
+                      "on-tertiary-fixed": "#301400"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "8px",
+                      "gutter": "24px",
+                      "content-max": "720px",
+                      "container-max": "1280px",
+                      "margin-desktop": "48px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "caption": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg-mobile": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "label-md": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "caption": ["14px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "display-lg-mobile": ["36px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                      "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "headline-md": ["30px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-lg": ["20px", {"lineHeight": "1.75", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .backdrop-blur-xl { backdrop-filter: blur(24px); }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(228, 225, 237, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased transition-colors duration-300">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-sm">
+<div class="flex justify-between items-center h-16 px-gutter max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-headline-sm text-headline-sm font-bold text-primary dark:text-primary-fixed tracking-tight" href="#">InsightHub</a>
+<nav class="hidden md:flex gap-6">
+<a class="text-on-surface-variant dark:text-outline hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Discover</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Writers</a>
+<a class="text-on-surface-variant dark:text-outline hover:text-primary transition-colors duration-200 font-body-md text-body-md" href="#">Topics</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden md:block text-on-surface-variant hover:text-primary px-4 py-2 font-label-md text-label-md transition-colors">Sign In</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-md text-label-md active:scale-95 transition-transform">Get Started</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A clean, professional headshot of a person with a modern, minimalist digital aesthetic. The style is inspired by premium UI photography, featuring soft directional studio lighting and a neutral, high-key background. The overall mood is focused, intellectual, and professional, using a soft color palette that aligns with a high-end tech environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaBJeqicEOfiUMekAUUCJe2jcxR0KEywI-A1Pt_1xX0PfiEceAcJ3v6JKL0h2zUOjefWRiy6V-A_Mq3pEdwOzgQVh4yS3r0Ne6slfue0vvsEpInZ-kjHRjw5Yn2mhVFXrF1jYvTkR_hfBrlHCFLl2BFK2ltNJ__A7c0WTlMj9OIHNyTFIAgSCHLPmMVgMJoXWayp-kNQaN1TbK_Ms8_w6q-pjvQBhwmO4vR2A8EmeFGuchWfQrygEU1Q"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32">
+<div class="max-w-container-max mx-auto px-gutter">
+<!-- Hero Section -->
+<section class="mb-16">
+<div class="relative w-full h-64 rounded-xl overflow-hidden mb-12 shadow-sm bg-surface-container-low">
+<img class="w-full h-full object-cover opacity-80" data-alt="A wide cinematic landscape featuring abstract gradient textures in shades of soft indigo and deep lavender. The scene has a clean, high-end professional feel, with subtle geometric lens flares and a minimalist aesthetic. The lighting is diffused and modern, creating a calm and intellectual mood for a professional design profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_BCuYp4vq3zn5CymflyUA78i2PFEL24Rj2B4IIci9_LGsZEBlBi67FA-bKU4UhbPuKH2kE3VmcSMGkUolkVqfSuhHFwpZPX1OPZrAtSu75ttvFvTDqQxEhD_QoPw3oxUdkXa2e8evgpWkHDyDVGfWGpvdzqGdREkeQ12mg7FSN0toKXD-S6gcfBD7oAu1I_T_oNXgblAs3yoiJBbQ4a0bcqXZ-XrAuJ_IsBDvJCDoSJShmsW-7DuA6A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent"></div>
+</div>
+<div class="flex flex-col md:flex-row items-end gap-6 -mt-24 px-4 md:px-8">
+<div class="relative">
+<div class="w-32 h-32 md:w-40 md:w-40 rounded-full border-4 border-background overflow-hidden shadow-lg bg-surface">
+<img alt="Alex Rivera" class="w-full h-full object-cover" data-alt="A friendly and professional digital avatar of Alex Rivera, a Product Designer. The portrait is set against a clean, minimalist background with professional, soft-key lighting that emphasizes a trustworthy and creative personality. The style is modern and refined, matching a premium professional blogging platform." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfAOn5CVLZT3FRKpXC6ghKNH36-H80HObX577mSjxLn5zAJbRInJL9YVWpy2rPdsQeAXcV8XTdhQURde-JXv_CDFEai7ihxztdXsolkvgASNHXciBHlCFkQlFYVKTJcaWTtQXdEyRoFPkNgecV4h-PFSsmxB1iMHwrCLSV7wYEWkDwkJ1Z-X2sSlOWTPGpil63dzRuYBGiFoQJjpxbXND-jeqAd2XHn2LdoY4bv7ROU6N37RfR_cYmwg"/>
+</div>
+</div>
+<div class="flex-1 pb-2">
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface">Alex Rivera</h1>
+<p class="text-on-surface-variant font-body-lg text-body-lg">Product Designer &amp; Tech Enthusiast</p>
+</div>
+<div class="flex gap-3 pb-2">
+<button class="border border-primary text-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary-fixed transition-colors active:scale-95 transition-transform">Message</button>
+<button class="bg-primary text-on-primary px-8 py-2.5 rounded-full font-label-md text-label-md hover:bg-primary/90 shadow-md active:scale-95 transition-transform flex items-center gap-2">
+                            Follow
+                        </button>
+</div>
+</div>
+</section>
+<!-- Content Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<!-- Main Feed Area -->
+<div class="lg:col-span-8">
+<!-- Tabs -->
+<div class="flex border-b border-outline-variant/30 mb-8 overflow-x-auto scrollbar-hide">
+<button class="px-6 py-4 font-label-md text-label-md border-b-2 border-primary text-primary whitespace-nowrap">Authored Posts</button>
+<button class="px-6 py-4 font-label-md text-label-md text-on-surface-variant hover:text-primary whitespace-nowrap transition-colors">About</button>
+<button class="px-6 py-4 font-label-md text-label-md text-on-surface-variant hover:text-primary whitespace-nowrap transition-colors">Activity</button>
+</div>
+<!-- Post Feed -->
+<div class="space-y-8">
+<!-- Post Item 1 -->
+<article class="group bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/20 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex flex-col md:flex-row gap-6">
+<div class="w-full md:w-48 h-32 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A professional close-up of high-end consumer technology products on a minimalist wooden desk. The composition includes a sleek smartphone and wireless earbuds, illuminated by natural afternoon light filtering through a window. The style is clean, modern, and high-contrast, emphasizing precision and design excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5vtZHRfW6-Elx6Hb02wHg8TnC5vdUUTgTx5QET2_1jOEVFgpMuIkFwdsIvHWedDNhBICnd5bMXUYupnEgF_G8ogw_BzBXUvStJ3Ob4CiyivNb9WmXM1Rc_PcyVms8LXcH8VdsBZjGlahR4CDaStNfO-TjuTo8CniKhEmEbUcoY7Taz3iG9wZCRgRQ2VS8H6bocAf6gDP55Vm0uTgIywob3UTjFQCRlDEjvE1T_z2luXmEIu69__LHgw"/>
+</div>
+<div class="flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-md text-[12px] uppercase tracking-wider">Design</span>
+<span class="text-caption font-caption text-on-surface-variant">Oct 12, 2023 · 8 min read</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors mb-2">The Future of Minimalist Interfaces in AR</h3>
+<p class="text-on-surface-variant font-body-md text-body-md line-clamp-2">Exploring how digital clutter disappears when the canvas is the physical world around us...</p>
+</div>
+<div class="flex items-center gap-4 mt-4">
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">thumb_up</span>
+<span class="text-caption font-caption">1.2k</span>
+</button>
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-caption font-caption">84</span>
+</button>
+<button class="ml-auto text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Post Item 2 -->
+<article class="group bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/20 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex flex-col md:flex-row gap-6">
+<div class="w-full md:w-48 h-32 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A top-down view of a designer's workspace featuring a tablet with digital wireframes and a clean sketchpad. The environment is bright and airy, with soft shadows and a professional, minimalist color palette of whites, grays, and subtle indigo accents. The atmosphere is productive and intellectually stimulating." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfRSwFsIdzWk2zZiLRbHErYCEYFsk5YxY212cR4G2CLql-RiLC_tF7Rsb-KOpgT54_d2GntdcHiEKhn5B6F3gBlZrfNUcmPvJyCqAA5ZM8cDVnPlVfAHFDOUtwBeGsiYnSNQkj3L7MJpyDwS6z_TGCQqpJGp-TklZJzUNJEOSle2hk7EISf9YmMars_SrSrQMe5hryjzHTMRUyQA0ex_KGRIJ45q2FAD_brviJzCKpolnzjW3WroJ9HQ"/>
+</div>
+<div class="flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-md text-[12px] uppercase tracking-wider">Productivity</span>
+<span class="text-caption font-caption text-on-surface-variant">Sep 28, 2023 · 5 min read</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors mb-2">My 4-Hour Focus Routine for Deep Work</h3>
+<p class="text-on-surface-variant font-body-md text-body-md line-clamp-2">The exact system I use to manage cognitive load and stay creative in a world of notifications...</p>
+</div>
+<div class="flex items-center gap-4 mt-4">
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">thumb_up</span>
+<span class="text-caption font-caption">940</span>
+</button>
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-caption font-caption">32</span>
+</button>
+<button class="ml-auto text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Post Item 3 -->
+<article class="group bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/20 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex flex-col md:flex-row gap-6">
+<div class="w-full md:w-48 h-32 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An abstract visualization of digital data flow, represented by glowing lines of code and light on a dark, sophisticated circuit-like background. The visual style is premium tech, utilizing deep blues and sharp, crisp white highlights. The mood is high-tech, futuristic, and professional, suggesting deep insights into engineering and tech trends." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5szpzyj7VcmGUgl_HrHRyJJAj7NKi6NzoAoac8eJDB4p7x0w2EC5qYzG2aHC9JDkuG1rhAzDxn3lHk0T7F9t55RSxcHR0M09nt_2wrBkdAezIlWugCDHecuMjevZz0kk88Lq2b5rU__QhjMRvNtZXW6GXRloUy2U77xIq0eMlBAdbMkrULykopCew8TIsnSirdmh8haEHEb5dI9Un5EqbnBFAsDXUUAOxWpN8Ny7MH3Y35Geu39nFNQ"/>
+</div>
+<div class="flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-md text-[12px] uppercase tracking-wider">Tech</span>
+<span class="text-caption font-caption text-on-surface-variant">Sep 15, 2023 · 12 min read</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors mb-2">Why Hardware is the New Software</h3>
+<p class="text-on-surface-variant font-body-md text-body-md line-clamp-2">How custom silicon is changing the way we design applications and user experiences...</p>
+</div>
+<div class="flex items-center gap-4 mt-4">
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">thumb_up</span>
+<span class="text-caption font-caption">2.5k</span>
+</button>
+<button class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chat_bubble</span>
+<span class="text-caption font-caption">112</span>
+</button>
+<button class="ml-auto text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+<!-- Sidebar Stats -->
+<aside class="lg:col-span-4 space-y-8">
+<!-- Stats Card -->
+<div class="bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-8 shadow-sm">
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-6">User Stats</h4>
+<div class="grid grid-cols-1 gap-6">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant font-body-md">Followers</span>
+<span class="font-headline-sm text-headline-sm text-primary">12.8k</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant font-body-md">Following</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">432</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant font-body-md">Total Reads</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">104k</span>
+</div>
+</div>
+<div class="mt-8 pt-8 border-t border-outline-variant/20">
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-4">Top Topics</h4>
+<div class="flex flex-wrap gap-2">
+<span class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-caption font-caption">Product Design</span>
+<span class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-caption font-caption">AI</span>
+<span class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-caption font-caption">Tech Trends</span>
+<span class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-caption font-caption">UX Research</span>
+<span class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full text-caption font-caption">Future of Work</span>
+</div>
+</div>
+</div>
+<!-- Connect Card -->
+<div class="bg-primary-container text-on-primary-container rounded-xl p-8 shadow-md">
+<h4 class="font-headline-sm text-headline-sm mb-2">Connect with Alex</h4>
+<p class="font-body-md text-body-md opacity-90 mb-6">Receive notifications whenever Alex publishes a new article or insight.</p>
+<button class="w-full bg-on-primary-container text-on-primary px-6 py-3 rounded-full font-label-md text-label-md hover:shadow-lg active:scale-95 transition-all">Subscribe via Email</button>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-surface-dim border-t border-outline-variant/20 w-full">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 py-16 px-gutter max-w-container-max mx-auto">
+<div class="md:col-span-1">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">InsightHub</span>
+<p class="mt-4 text-on-surface-variant font-caption text-caption">The premier destination for professional thought leadership and deep-dive technical insights.</p>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-wider">Platform</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary font-caption text-caption transition-colors" href="#">About</a></li>
+<li><a class="text-on-surface-variant hover:text-primary font-caption text-caption transition-colors" href="#">Careers</a></li>
+<li><a class="text-on-surface-variant hover:text-primary font-caption text-caption transition-colors" href="#">Privacy</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-wider">Resources</h5>
+<ul class="space-y-4">
+<li><a class="text-on-surface-variant hover:text-primary font-caption text-caption transition-colors" href="#">Terms</a></li>
+<li><a class="text-on-surface-variant hover:text-primary font-caption text-caption transition-colors" href="#">Contact</a></li>
+<li><a class="text-on-surface-variant hover:text-primary font-caption text-caption transition-colors" href="#">Help Center</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface mb-6 uppercase tracking-wider">Stay Updated</h5>
+<p class="text-on-surface-variant font-caption text-caption mb-4">Join our monthly digest of best stories.</p>
+<div class="flex gap-2">
+<input class="bg-surface border border-outline-variant rounded-full px-4 py-2 text-caption w-full focus:outline-none focus:ring-1 focus:ring-primary transition-all" placeholder="Email" type="email"/>
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full font-label-md text-label-md active:scale-95 transition-transform">Join</button>
+</div>
+</div>
+</div>
+<div class="max-w-container-max mx-auto px-gutter py-8 border-t border-outline-variant/10 text-center">
+<p class="text-on-surface-variant font-caption text-caption">© 2024 InsightHub. All rights reserved.</p>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden bg-surface dark:bg-surface-dim border-t border-outline-variant/30 shadow-lg flex justify-around items-center py-3 pb-safe px-4">
+<button class="text-on-surface-variant dark:text-outline flex flex-col items-center gap-1 active:bg-surface-container-high tap-highlight-transparent">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</button>
+<button class="text-on-surface-variant dark:text-outline flex flex-col items-center gap-1 active:bg-surface-container-high tap-highlight-transparent">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-md text-label-md">Search</span>
+</button>
+<button class="text-on-surface-variant dark:text-outline flex flex-col items-center gap-1 active:bg-surface-container-high tap-highlight-transparent">
+<span class="material-symbols-outlined">bookmarks</span>
+<span class="font-label-md text-label-md">Library</span>
+</button>
+<button class="text-primary dark:text-primary-fixed flex flex-col items-center gap-1 active:bg-surface-container-high tap-highlight-transparent">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-md text-label-md">Profile</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions for Follow button
+        const followBtn = document.querySelector('button.bg-primary.text-on-primary.px-8');
+        if (followBtn) {
+            followBtn.addEventListener('click', function() {
+                const isFollowing = this.innerText.includes('Following');
+                if (isFollowing) {
+                    this.innerHTML = 'Follow';
+                    this.classList.remove('bg-surface-container-highest', 'text-on-surface');
+                    this.classList.add('bg-primary', 'text-on-primary');
+                } else {
+                    this.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span> Following';
+                    this.classList.remove('bg-primary', 'text-on-primary');
+                    this.classList.add('bg-surface-container-highest', 'text-on-surface');
+                }
+            });
+        }
+
+        // Tab switching logic
+        const tabs = document.querySelectorAll('button.whitespace-nowrap');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => {
+                    t.classList.remove('border-b-2', 'border-primary', 'text-primary');
+                    t.classList.add('text-on-surface-variant');
+                });
+                this.classList.add('border-b-2', 'border-primary', 'text-primary');
+                this.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

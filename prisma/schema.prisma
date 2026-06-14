@@ -14,29 +14,164 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model User {
-  id        String   @id @default(uuid())
-  name      String
-  email     String   @unique
-  password  String
-  imageUrl  String?
-  // posts     BlogPost[]
+// Production-ready schema for Nasacy Blog
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+enum Role {
+  USER
+  ADMIN
 }
 
+model User {
+  id         String      @id @default(uuid())
+  kindeId    String?     @unique
+  email      String      @unique
+  name       String?
+  imageUrl   String?
+  role       Role        @default(USER)
+  aboutMe    String?
+  bannerUrl  String?
+  gender     String?
+
+  posts      BlogPost[]  @relation("AuthorPosts")
+  comments   Comment[]
+  likes      Like[]
+  bookmarks  Bookmark[]
+  reports    Report[]
+  followers  Follow[]    @relation("following")
+  following  Follow[]    @relation("follower")
+
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@map("users")
+}
 
 model BlogPost {
-  id        String   @id @default(uuid())
-  title     String
-  content   String
-  imageUrl  String?
-  authorId  String?
-  authorImage  String?
-  authorName  String?
-  // author    User     @relation(fields: [authorId], references: [id])
+  id         String        @id @default(uuid())
+  title      String
+  slug       String        @unique
+  excerpt    String?
+  content    String
+  imageUrl   String?
+  published  Boolean       @default(false)
+  featured   Boolean       @default(false)
+  viewCount  Int           @default(0)
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  authorId   String
+  author     User          @relation("AuthorPosts", fields: [authorId], references: [id])
+
+  comments   Comment[]
+  likes      Like[]
+  bookmarks  Bookmark[]
+  categories PostCategory[]
+  reports    Report[]
+
+  createdAt  DateTime      @default(now())
+  updatedAt  DateTime      @updatedAt
+
+  @@index([published])
+  @@index([createdAt])
+  @@map("blog_posts")
 }
+
+model Category {
+  id         String         @id @default(uuid())
+  name       String
+  slug       String         @unique
+  description String?
+
+  posts      PostCategory[]
+
+  createdAt  DateTime       @default(now())
+
+  @@map("categories")
+}
+
+model PostCategory {
+  id         String    @id @default(uuid())
+  post       BlogPost  @relation(fields: [postId], references: [id])
+  postId     String
+  category   Category  @relation(fields: [categoryId], references: [id])
+  categoryId String
+
+  @@unique([postId, categoryId])
+  @@map("post_categories")
+}
+
+model Comment {
+  id         String     @id @default(uuid())
+  content    String
+
+  postId     String
+  post       BlogPost   @relation(fields: [postId], references: [id])
+
+  authorId   String
+  author     User       @relation(fields: [authorId], references: [id])
+
+  parentId   String? 
+  parent     Comment?   @relation("CommentReplies", fields: [parentId], references: [id])
+  replies    Comment[]  @relation("CommentReplies")
+  reports    Report[]
+
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  @@index([postId])
+  @@map("comments")
+}
+
+model Like {
+  id         String    @id @default(uuid())
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String
+  post       BlogPost  @relation(fields: [postId], references: [id])
+  postId     String
+  createdAt  DateTime  @default(now())
+
+  @@unique([userId, postId])
+  @@map("likes")
+}
+
+model Bookmark {
+  id         String    @id @default(uuid())
+  user       User      @relation(fields: [userId], references: [id])
+  userId     String
+  post       BlogPost  @relation(fields: [postId], references: [id])
+  postId     String
+  createdAt  DateTime  @default(now())
+
+  @@unique([userId, postId])
+  @@map("bookmarks")
+}
+
+model Report {
+  id          String    @id @default(uuid())
+  reporterId  String
+  reporter    User      @relation(fields: [reporterId], references: [id])
+
+  postId      String? 
+  post        BlogPost? @relation(fields: [postId], references: [id])
+
+  commentId   String?
+  comment     Comment?  @relation(fields: [commentId], references: [id])
+
+  reason      String
+  resolved    Boolean   @default(false)
+  createdAt   DateTime  @default(now())
+
+  @@map("reports")
+}
+
+model Follow {
+  followerId  String
+  follower    User   @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+  followingId String
+  following   User   @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+
+  @@id([followerId, followingId])
+  @@map("follows")
+}
+
+// Add additional indexes for performance in production migrations as needed.

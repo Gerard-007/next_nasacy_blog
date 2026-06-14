@@ -23,6 +23,11 @@ const nextConfig: NextConfig = {
         hostname: "flex.f6s.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        port: "",
+      },
     ],
   },
 

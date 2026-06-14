@@ -1,43 +1,31 @@
-import { blogCreateSubmission } from "@/app/actions";
-import SubmitButton from "@/components/general/SubmitButton";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@radix-ui/react-label";
+import { prisma } from "@/app/utils/db";
+import BlogEditor from "@/components/editor/BlogEditor";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-export default function CreateBlogRoute() {
-    return (
-        <>
-            <div className="max-w-lg mx-auto mt-10">
-                <Card>
-                    <CardHeader>
-                        <CardTitle>Create Post</CardTitle>
-                        <CardDescription>
-                            This is the create page where you can create new content.
-                        </CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                        <form className="flex flex-col gap-5" action={blogCreateSubmission}>
-                            <div className="flex flex-col gap-2">
-                                <Label>Title</Label>
-                                <Input name="title" required type="text" placeholder="Title" />
-                            </div>
+export const dynamic = "force-dynamic";
 
-                            <div className="flex flex-col gap-2">
-                                <Label>Content</Label>
-                                <Textarea name="content" required placeholder="Your text goes here"/>
-                            </div>
+export default async function CreateBlogRoute() {
+  const { getUser } = getKindeServerSession();
+  const kindeUser = await getUser();
+  
+  let isAdmin = false;
+  if (kindeUser?.id) {
+    const user = await prisma.user.findUnique({
+      where: { kindeId: kindeUser.id },
+      select: { role: true },
+    });
+    isAdmin = user?.role === "ADMIN";
+  }
 
-                            <div className="flex flex-col gap-2">
-                                <Label>Image url</Label>
-                                <Input name="url" required type="url" placeholder="image url"/>
-                            </div>
+  const categories = await prisma.category.findMany({
+    orderBy: { name: "asc" },
+  });
 
-                            <SubmitButton />
-                        </form>
-                    </CardContent>
-                </Card>
-            </div>
-        </>
-    );
+  return (
+    <div className="pt-24 pb-32 min-h-screen">
+      <div className="max-w-container-max mx-auto px-gutter">
+        <BlogEditor categories={categories} isAdmin={isAdmin} />
+      </div>
+    </div>
+  );
 }
