@@ -117,9 +117,9 @@ export default async function AdminPage({
   };
 
   return (
-    <div className="min-h-screen flex overflow-hidden bg-background">
+    <div className="min-h-screen flex overflow-hidden bg-surface-bright/50">
       {/* Sidebar */}
-      <aside className="hidden md:flex w-64 border-r border-outline-variant/30 flex-shrink-0 flex-col bg-surface-container-lowest z-30">
+      <aside className="hidden md:flex w-64 border-r border-outline-variant/20 flex-shrink-0 flex-col bg-surface-container-lowest z-30">
         <div className="h-16 flex items-center px-6 mb-4">
           <span className="text-headline-sm font-headline-sm font-bold text-primary tracking-tight">Nasacy Admin</span>
         </div>
@@ -245,7 +245,7 @@ export default async function AdminPage({
         <div className="flex-1 overflow-y-auto no-scrollbar p-4 sm:p-6 md:p-8 space-y-6 md:space-y-gutter pb-16">
           {/* Quick Stats Section */}
           <section className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col gap-2">
+            <div className="bg-surface-container-lowest glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col gap-2">
               <span className="font-label-md text-label-md text-outline">Total Users</span>
               <div className="flex items-end justify-between">
                 <span className="text-headline-md font-headline-md text-on-surface">{totalUsers}</span>
@@ -254,7 +254,7 @@ export default async function AdminPage({
                 </span>
               </div>
             </div>
-            <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col gap-2">
+            <div className="bg-surface-container-lowest glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col gap-2">
               <span className="font-label-md text-label-md text-outline">Active Writers</span>
               <div className="flex items-end justify-between">
                 <span className="text-headline-md font-headline-md text-on-surface">{activeWriters}</span>
@@ -263,7 +263,7 @@ export default async function AdminPage({
                 </span>
               </div>
             </div>
-            <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col gap-2">
+            <div className="bg-surface-container-lowest glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col gap-2">
               <span className="font-label-md text-label-md text-outline">Pending Posts</span>
               <div className="flex items-end justify-between">
                 <span className="text-headline-md font-headline-md text-on-surface">{pendingPosts}</span>
@@ -272,7 +272,7 @@ export default async function AdminPage({
                 </span>
               </div>
             </div>
-            <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col gap-2">
+            <div className="bg-surface-container-lowest glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col gap-2">
               <span className="font-label-md text-label-md text-outline">Unresolved Reports</span>
               <div className="flex items-end justify-between">
                 <span className="text-headline-md font-headline-md text-on-surface">{reportedCount}</span>
@@ -290,8 +290,8 @@ export default async function AdminPage({
           {tab === "overview" && (
             <div className="space-y-gutter">
               {/* Post Moderation Table Preview */}
-              <section className="bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm overflow-hidden">
-                <div className="px-6 py-4 border-b border-outline-variant/10 flex items-center justify-between">
+              <section className="bg-surface-container-lowest glass-card rounded-2xl shadow-sm overflow-hidden border border-outline-variant/30">
+                <div className="px-6 py-4 border-b border-outline-variant/20 flex items-center justify-between bg-white/40">
                   <h2 className="text-headline-sm font-headline-sm text-on-surface">Recent Posts</h2>
                   <Link href="/admin?tab=posts" className="text-primary font-label-md text-label-md hover:underline">
                     Manage Posts
@@ -300,7 +300,7 @@ export default async function AdminPage({
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse">
                     <thead>
-                      <tr className="bg-surface-container-low">
+                      <tr className="bg-surface-container-low/30">
                         <th className="px-6 py-3 font-label-md text-label-md text-outline">Post Title</th>
                         <th className="px-6 py-3 font-label-md text-label-md text-outline">Author</th>
                         <th className="px-6 py-3 font-label-md text-label-md text-outline">Date</th>
@@ -317,7 +317,7 @@ export default async function AdminPage({
                         </tr>
                       ) : (
                         postsList.map((postItem) => (
-                          <tr key={postItem.id} className="hover:bg-surface-container-low transition-colors group">
+                          <tr key={postItem.id} className="hover:bg-surface-container-low/50 transition-colors group">
                             <td className="px-6 py-4 font-label-md text-label-md text-on-surface">
                               <div className="flex items-center gap-3">
                                 {postItem.imageUrl && (
@@ -384,8 +384,8 @@ export default async function AdminPage({
               {/* User list + Recent Reports grid */}
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
                 {/* User List Preview */}
-                <section className="bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm">
-                  <div className="px-6 py-4 border-b border-outline-variant/10 flex items-center justify-between">
+                <section className="bg-surface-container-lowest glass-card rounded-2xl shadow-sm border border-outline-variant/30">
+                  <div className="px-6 py-4 border-b border-outline-variant/20 flex items-center justify-between bg-white/40">
                     <h2 className="text-headline-sm font-headline-sm text-on-surface">Recent Users</h2>
                     <Link href="/admin?tab=users" className="text-primary font-label-md text-label-md hover:underline">
                       View All
@@ -395,38 +395,38 @@ export default async function AdminPage({
                     {usersList.map((usr) => (
                       <div
                         key={usr.id}
-                        className="flex items-center justify-between p-4 hover:bg-surface-container-low rounded-xl transition-all"
-                      >
-                        <div className="flex items-center gap-3">
-                          {usr.imageUrl ? (
-                            <Image src={usr.imageUrl} alt={usr.name ?? ""} width={40} height={40} className="w-10 h-10 rounded-full object-cover" />
-                          ) : (
-                            <div className="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-primary">
-                              {getInitials(usr.name)}
-                            </div>
-                          )}
-                          <div>
-                            <span className="font-label-md text-label-md text-on-surface block">{usr.name ?? "User"}</span>
-                            <span className="font-caption text-caption text-outline block">{usr.email}</span>
-                          </div>
-                        </div>
-                        <span
-                          className={`px-3 py-1 rounded-full font-label-md text-[11px] ${
-                            usr.role === "ADMIN"
-                              ? "bg-primary-fixed text-on-primary-fixed-variant"
-                              : "bg-secondary-fixed text-on-secondary-fixed-variant"
-                          }`}
+className="flex items-center justify-between p-4 hover:bg-surface-container-low/50 rounded-xl transition-all"
                         >
-                          {usr.role}
-                        </span>
-                      </div>
+                          <div className="flex items-center gap-3">
+                            {usr.imageUrl ? (
+                              <Image src={usr.imageUrl} alt={usr.name ?? ""} width={40} height={40} className="w-10 h-10 rounded-full object-cover" />
+                            ) : (
+                              <div className="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-primary">
+                                {getInitials(usr.name)}
+                              </div>
+                            )}
+                            <div>
+                              <span className="font-label-md text-label-md text-on-surface block">{usr.name ?? "User"}</span>
+                              <span className="font-caption text-caption text-outline block">{usr.email}</span>
+                            </div>
+                          </div>
+                          <span
+                            className={`px-3 py-1 rounded-full font-label-md text-[11px] ${
+                              usr.role === "ADMIN"
+                                ? "bg-primary-fixed text-on-primary-fixed-variant"
+                                : "bg-secondary-fixed text-on-secondary-fixed-variant"
+                            }`}
+                          >
+                            {usr.role}
+                          </span>
+                        </div>
                     ))}
                   </div>
                 </section>
 
                 {/* Recent Reports Preview */}
-                <section className="bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm flex flex-col">
-                  <div className="px-6 py-4 border-b border-outline-variant/10 flex items-center justify-between">
+                <section className="bg-surface-container-lowest glass-card rounded-2xl shadow-sm border border-outline-variant/30 flex flex-col">
+                  <div className="px-6 py-4 border-b border-outline-variant/20 flex items-center justify-between bg-white/40">
                     <h2 className="text-headline-sm font-headline-sm text-on-surface">Recent Reports</h2>
                     <Link href="/admin?tab=reports" className="text-primary font-label-md text-label-md hover:underline">
                       Manage Reports
@@ -504,14 +504,14 @@ export default async function AdminPage({
 
           {/* USER MANAGEMENT TAB */}
           {tab === "users" && (
-            <section className="bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm overflow-hidden">
-              <div className="px-6 py-4 border-b border-outline-variant/10 flex items-center justify-between">
+            <section className="bg-surface-container-lowest glass-card rounded-2xl shadow-sm overflow-hidden border border-outline-variant/30">
+              <div className="px-6 py-4 border-b border-outline-variant/20 flex items-center justify-between bg-white/40">
                 <h2 className="text-headline-sm font-headline-sm text-on-surface font-bold">User Database ({usersList.length})</h2>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-surface-container-low">
+                    <tr className="bg-surface-container-low/30">
                       <th className="px-6 py-3 font-label-md text-label-md text-outline">User Details</th>
                       <th className="px-6 py-3 font-label-md text-label-md text-outline">Role</th>
                       <th className="px-6 py-3 font-label-md text-label-md text-outline">Joined Date</th>
@@ -520,7 +520,7 @@ export default async function AdminPage({
                   </thead>
                   <tbody className="divide-y divide-outline-variant/10">
                     {usersList.map((usr) => (
-                      <tr key={usr.id} className="hover:bg-surface-container-low transition-colors group">
+                      <tr key={usr.id} className="hover:bg-surface-container-low/50 transition-colors group">
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-3">
                             {usr.imageUrl ? (
@@ -594,14 +594,14 @@ export default async function AdminPage({
 
           {/* POST MODERATION TAB */}
           {tab === "posts" && (
-            <section className="bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm overflow-hidden">
-              <div className="px-6 py-4 border-b border-outline-variant/10">
+            <section className="bg-surface-container-lowest glass-card rounded-2xl shadow-sm overflow-hidden border border-outline-variant/30">
+              <div className="px-6 py-4 border-b border-outline-variant/20 bg-white/40">
                 <h2 className="text-headline-sm font-headline-sm text-on-surface font-bold">Post Catalog ({postsList.length})</h2>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-surface-container-low">
+                    <tr className="bg-surface-container-low/30">
                       <th className="px-6 py-3 font-label-md text-label-md text-outline">Post</th>
                       <th className="px-6 py-3 font-label-md text-label-md text-outline">Author</th>
                       <th className="px-6 py-3 font-label-md text-label-md text-outline">Status</th>
@@ -612,7 +612,7 @@ export default async function AdminPage({
                   </thead>
                   <tbody className="divide-y divide-outline-variant/10">
                     {postsList.map((postItem) => (
-                      <tr key={postItem.id} className="hover:bg-surface-container-low transition-colors group">
+                      <tr key={postItem.id} className="hover:bg-surface-container-low/50 transition-colors group">
                         <td className="px-6 py-4">
                           <div className="flex items-center gap-3">
                             {postItem.imageUrl && (
@@ -704,14 +704,14 @@ export default async function AdminPage({
 
           {/* REPORTS TAB */}
           {tab === "reports" && (
-            <section className="bg-surface-container-lowest rounded-xl border border-outline-variant/10 shadow-sm overflow-hidden">
-              <div className="px-6 py-4 border-b border-outline-variant/10">
+            <section className="bg-surface-container-lowest glass-card rounded-2xl shadow-sm overflow-hidden border border-outline-variant/30">
+              <div className="px-6 py-4 border-b border-outline-variant/20 bg-white/40">
                 <h2 className="text-headline-sm font-headline-sm text-on-surface font-bold">User Infraction Reports ({reportsList.length})</h2>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-left border-collapse">
                   <thead>
-                    <tr className="bg-surface-container-low">
+                    <tr className="bg-surface-container-low/30">
                       <th className="px-6 py-3 font-label-md text-label-md text-outline">Reporter</th>
                       <th className="px-6 py-3 font-label-md text-label-md text-outline">Infraction Type</th>
                       <th className="px-6 py-3 font-label-md text-label-md text-outline">Target Content</th>
@@ -729,7 +729,7 @@ export default async function AdminPage({
                       </tr>
                     ) : (
                       reportsList.map((reportItem) => (
-                        <tr key={reportItem.id} className="hover:bg-surface-container-low transition-colors group">
+                        <tr key={reportItem.id} className="hover:bg-surface-container-low/50 transition-colors group">
                           <td className="px-6 py-4">
                             <div className="flex flex-col">
                               <span className="font-label-md text-label-md text-on-surface block">
@@ -815,7 +815,7 @@ export default async function AdminPage({
           {tab === "settings" && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
               {/* Preferences Form */}
-              <section className="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 shadow-sm space-y-6">
+              <section className="bg-surface-container-lowest glass-card p-8 rounded-2xl shadow-sm border border-outline-variant/30 space-y-6">
                 <h2 className="text-headline-sm font-headline-sm text-on-surface font-bold mb-4">Blog System Preferences</h2>
                 <div className="space-y-4">
                   <div>
@@ -854,7 +854,7 @@ export default async function AdminPage({
               </section>
 
               {/* Maintenance Tools */}
-              <section className="bg-surface-container-lowest p-8 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col justify-between">
+              <section className="bg-surface-container-lowest glass-card p-8 rounded-2xl shadow-sm border border-outline-variant/30 flex flex-col justify-between">
                 <div>
                   <h2 className="text-headline-sm font-headline-sm text-on-surface font-bold mb-4">Maintenance Panel</h2>
                   <p className="text-body-md text-on-surface-variant mb-8">

@@ -137,7 +137,7 @@ export default async function DashboardRoute() {
 
           {/* Analytics Cards */}
           <section className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-            <div className="glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+            <div className="bg-surface-container-lowest glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <p className="font-label-md text-label-md text-outline mb-1 uppercase tracking-wider">Total Views</p>
@@ -146,7 +146,7 @@ export default async function DashboardRoute() {
                 <span className="bg-secondary-container text-on-secondary-container px-2 py-1 rounded text-[12px] font-bold">+12%</span>
               </div>
             </div>
-            <div className="glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+            <div className="bg-surface-container-lowest glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <p className="font-label-md text-label-md text-outline mb-1 uppercase tracking-wider">Total Reactions</p>
@@ -155,7 +155,7 @@ export default async function DashboardRoute() {
                 <span className="bg-secondary-container text-on-secondary-container px-2 py-1 rounded text-[12px] font-bold">+8%</span>
               </div>
             </div>
-            <div className="glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+            <div className="bg-surface-container-lowest glass-card p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
               <div className="flex justify-between items-start mb-4">
                 <div>
                   <p className="font-label-md text-label-md text-outline mb-1 uppercase tracking-wider">Followers</p>
@@ -167,7 +167,7 @@ export default async function DashboardRoute() {
           </section>
 
           {/* Recent Posts Table */}
-          <section className="glass-card rounded-2xl shadow-sm overflow-hidden border border-outline-variant/30">
+          <section className="bg-surface-container-lowest glass-card rounded-2xl shadow-sm overflow-hidden border border-outline-variant/30">
             <div className="p-6 border-b border-outline-variant/20 flex justify-between items-center bg-white/40">
               <h2 className="text-headline-sm text-[20px] text-on-surface">Recent Posts</h2>
               <div className="flex items-center gap-4">
