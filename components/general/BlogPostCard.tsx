@@ -97,11 +97,38 @@ export default function BlogPostCard({ data, featured = false }: BlogPostCardPro
         {excerpt && (
           <p className="text-on-surface-variant font-caption text-caption mb-6 line-clamp-2">{excerpt}</p>
         )}
-        <div className="mt-auto flex items-center justify-between pt-4 border-t border-outline-variant/20">
+        {/* <div className="mt-auto flex items-center justify-between pt-4 border-t border-outline-variant/20">
           <span className="font-caption text-caption text-outline">
             {data.author?.name ?? "Unknown"} &middot; {readTime} min read
           </span>
           <span className="material-symbols-outlined text-outline group-hover:text-primary transition-colors">bookmark</span>
+        </div> */}
+        <div className="flex items-center justify-between mt-auto pt-8 border-t border-outline-variant/20">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+              {data.author?.imageUrl ? (
+                <Image src={data.author.imageUrl} alt={data.author.name ?? "Author"} width={40} height={40} className="object-cover w-full h-full" />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center text-primary font-bold text-sm">
+                  {data.author?.name?.charAt(0) || "A"}
+                </div>
+              )}
+            </div>
+            <div>
+              <p className="font-label-md text-label-md text-on-surface">{data.author?.name ?? "Unknown"}</p>
+              <p className="font-caption text-caption text-on-surface-variant">
+                {new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" }).format(new Date(data.createdAt))} &middot; {readTime} min read
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center gap-4 text-on-surface-variant">
+            <span className="flex items-center gap-1 font-caption text-caption">
+              <span className="material-symbols-outlined text-[18px]">favorite</span> {data._count?.likes ?? 0}
+            </span>
+            <span className="flex items-center gap-1 font-caption text-caption">
+              <span className="material-symbols-outlined text-[18px]">chat_bubble</span> {data._count?.comments ?? 0}
+            </span>
+          </div>
         </div>
       </div>
     </article>
