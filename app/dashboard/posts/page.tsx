@@ -4,6 +4,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { syncKindeUser } from "@/lib/auth/sync-user";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { DeleteButton } from "@/components/general/DeleteButton";
+import { DashboardMobileNav } from "@/components/general/DashboardMobileNav";
 
 export const dynamic = "force-dynamic";
 
@@ -45,8 +46,8 @@ export default async function DashboardPostsPage() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-surface-bright/50">
-      <div className="flex flex-1 max-w-container-max mx-auto w-full">
+    <div className="min-h-screen bg-surface-bright/50 w-full">
+      <div className="flex flex-1 max-w-container-max mx-auto w-full min-h-screen">
         {/* Left Sidebar (Desktop) */}
         <aside className="hidden md:flex flex-col w-64 border-r border-outline-variant/20 p-6 sticky top-16 h-[calc(100vh-64px)] overflow-y-auto">
           <div className="space-y-8">
@@ -97,7 +98,8 @@ export default async function DashboardPostsPage() {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-6 md:p-8">
+        <main className="flex-1 min-w-0 w-full p-4 sm:p-4 md:p-4">
+          <DashboardMobileNav userId={localUser.id} isAdmin={localUser.role === "ADMIN"} />
           <header className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
               <h1 className="text-headline-md font-headline-md text-on-surface mb-2">Post Management</h1>
@@ -152,7 +154,7 @@ export default async function DashboardPostsPage() {
                                 </div>
                               )}
                             </div>
-                            <Link href={`/post/${post.slug}`} className="text-body-md font-bold text-on-surface max-w-[300px] truncate block hover:text-primary transition-colors">
+                            <Link href={`/post/${post.slug}`} className="text-body-md font-bold text-on-surface max-w-[120px] xs:max-w-[200px] sm:max-w-[300px] truncate block hover:text-primary transition-colors">
                               {post.title}
                             </Link>
                           </div>

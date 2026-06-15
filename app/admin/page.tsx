@@ -12,6 +12,8 @@ import {
   resolveReport,
   adminDeletePost,
   adminDeleteComment,
+  pruneUnusedFiles,
+  purgeCache,
 } from "@/app/actions";
 import AdminActionButton from "@/components/admin/AdminActionButton";
 
@@ -118,7 +120,7 @@ export default async function AdminPage({
       {/* Sidebar */}
       <aside className="w-64 border-r border-outline-variant/30 flex-shrink-0 flex flex-col bg-surface-container-lowest z-30">
         <div className="h-16 flex items-center px-6 mb-4">
-          <span className="text-headline-sm font-headline-sm font-bold text-primary tracking-tight">InsightHub Admin</span>
+          <span className="text-headline-sm font-headline-sm font-bold text-primary tracking-tight">Nasacy Admin</span>
         </div>
         <nav className="flex-1 px-4 space-y-2">
           <Link
@@ -862,24 +864,26 @@ export default async function AdminPage({
                         <span className="font-label-md text-label-md text-on-surface">Prune Unused Files</span>
                         <span className="font-caption text-caption text-outline">Removes orphaned image uploads from Cloudinary.</span>
                       </div>
-                      <button
-                        onClick={() => alert("Pruning task scheduled.")}
-                        className="px-4 py-2 bg-on-surface text-surface rounded-lg font-label-md text-label-md hover:bg-primary transition-colors"
+                      <AdminActionButton
+                        action={pruneUnusedFiles}
+                        confirmMessage="Are you sure you want to schedule unused file pruning? This may take some time."
+                        className="px-4 py-2 bg-on-surface text-surface rounded-lg font-label-md text-label-md hover:bg-primary transition-colors cursor-pointer"
                       >
                         Prune
-                      </button>
+                      </AdminActionButton>
                     </div>
                     <div className="flex items-center justify-between p-4 bg-surface-container rounded-xl">
                       <div className="flex flex-col">
-                        <span className="font-label-md text-label-md text-on-surface">Purge Cache Cache</span>
+                        <span className="font-label-md text-label-md text-on-surface">Purge System Cache</span>
                         <span className="font-caption text-caption text-outline">Clears the Next.js App Router cache.</span>
                       </div>
-                      <button
-                        onClick={() => alert("Cache purged successfully.")}
-                        className="px-4 py-2 bg-on-surface text-surface rounded-lg font-label-md text-label-md hover:bg-primary transition-colors"
+                      <AdminActionButton
+                        action={purgeCache}
+                        confirmMessage="Are you sure you want to purge the cache?"
+                        className="px-4 py-2 bg-on-surface text-surface rounded-lg font-label-md text-label-md hover:bg-primary transition-colors cursor-pointer"
                       >
                         Purge
-                      </button>
+                      </AdminActionButton>
                     </div>
                   </div>
                 </div>

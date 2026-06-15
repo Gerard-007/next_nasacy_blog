@@ -3,6 +3,7 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 import { publishPost, saveDraft, updatePost, createCategoryAction } from "@/app/actions";
 import { CldImage } from "next-cloudinary";
+import { toast } from "@/components/ui/Toast";
 
 interface Category {
   id: string;
@@ -221,11 +222,12 @@ export default function BlogEditor({ categories, post, isAdmin = false }: BlogEd
         editorRef.current?.focus();
         const imgHtml = `<img src="${data.url}" alt="Body Image" class="my-6 max-w-full rounded-xl cursor-pointer hover:ring-2 hover:ring-primary transition-all inline-block" style="width: 100%; display: block; margin-left: auto; margin-right: auto;" />`;
         document.execCommand("insertHTML", false, imgHtml);
+        toast.success("Image inserted successfully.");
       } else {
-        alert("Upload failed: " + (data.error ?? "Unknown error"));
+        toast.error("Upload failed: " + (data.error ?? "Unknown error"));
       }
     } catch {
-      alert("Network error uploading image");
+      toast.error("Network error uploading image");
     } finally {
       setInsertingBodyImage(false);
       if (e.target) e.target.value = "";
@@ -269,13 +271,14 @@ export default function BlogEditor({ categories, post, isAdmin = false }: BlogEd
         setLocalCategories(prev => [...prev, newCat]);
         setNewCategoryName("");
         setShowAddCategory(false);
+        toast.success("Category created successfully.");
         setTimeout(() => {
           const select = document.querySelector<HTMLSelectElement>("select[name='categoryId']");
           if (select) select.value = newCat.id;
         }, 100);
       }
     } catch (err: any) {
-      alert(err.message || "Failed to create category");
+      toast.error(err.message || "Failed to create category");
     } finally {
       setAddingCategory(false);
     }
@@ -289,12 +292,12 @@ export default function BlogEditor({ categories, post, isAdmin = false }: BlogEd
       const content = editorRef.current?.innerHTML ?? "";
 
       if (!title.trim()) {
-        alert("Please enter a title.");
+        toast.warning("Please enter a title.");
         setSubmitting(false);
         return;
       }
       if (!content.trim() || content === "<br>") {
-        alert("Please write some content.");
+        toast.warning("Please write some content.");
         setSubmitting(false);
         return;
       }
@@ -312,13 +315,16 @@ export default function BlogEditor({ categories, post, isAdmin = false }: BlogEd
 
       if (post) {
         await updatePost(post.id, formData);
+        toast.success("Post updated successfully.");
       } else if (published) {
         await publishPost(formData);
+        toast.success("Post published successfully.");
       } else {
         await saveDraft(formData);
+        toast.success("Draft saved successfully.");
       }
     } catch {
-      alert("Something went wrong. Please try again.");
+      toast.error("Something went wrong. Please try again.");
       setSubmitting(false);
     }
   }
@@ -654,43 +660,6 @@ export default function BlogEditor({ categories, post, isAdmin = false }: BlogEd
 
       {/* Sidebar Column */}
       <aside className="space-y-8 lg:sticky lg:top-24 h-fit">
-        {/* Publish Card */}
-        <div className="bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 shadow-sm space-y-6">
-          <h3 className="text-headline-sm font-headline-sm text-on-surface">Publish</h3>
-          <div className="space-y-4">
-            <div className="flex justify-between items-center text-sm">
-              <span className="text-on-surface-variant flex items-center gap-2">
-                <span className="material-symbols-outlined text-[20px]">visibility</span> Visibility
-              </span>
-              <span className="font-semibold text-primary">Public</span>
-            </div>
-            <div className="flex justify-between items-center text-sm">
-              <span className="text-on-surface-variant flex items-center gap-2">
-                <span className="material-symbols-outlined text-[20px]">schedule</span> Schedule
-              </span>
-              <span className="font-semibold">Now</span>
-            </div>
-          </div>
-          <div className="pt-4 space-y-3 hidden lg:block">
-            <button
-              type="button"
-              onClick={() => handleSubmit(true)}
-              disabled={submitting}
-              className="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all disabled:opacity-50"
-            >
-              {submitting ? "Saving..." : post ? "Update Post" : "Publish Post"}
-            </button>
-            <button
-              type="button"
-              onClick={() => handleSubmit(false)}
-              disabled={submitting}
-              className="w-full border border-outline-variant text-on-surface-variant font-label-md text-label-md py-3 rounded-xl hover:bg-surface-container transition-colors disabled:opacity-50"
-            >
-              {submitting ? "Saving..." : post ? "Save as Draft" : "Save as Draft"}
-            </button>
-          </div>
-        </div>
-
         {/* Settings */}
         <div className="space-y-6">
           <div className="space-y-2">
@@ -759,6 +728,43 @@ export default function BlogEditor({ categories, post, isAdmin = false }: BlogEd
               onChange={(e) => setTagsInput(e.target.value)}
             />
             <p className="text-caption text-outline">Separate tags with commas</p>
+          </div>
+        </div>
+
+        {/* Publish Card */}
+        <div className="bg-surface-container-low p-6 rounded-xl border border-outline-variant/20 shadow-sm space-y-6">
+          <h3 className="text-headline-sm font-headline-sm text-on-surface">Publish</h3>
+          <div className="space-y-4">
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-on-surface-variant flex items-center gap-2">
+                <span className="material-symbols-outlined text-[20px]">visibility</span> Visibility
+              </span>
+              <span className="font-semibold text-primary">Public</span>
+            </div>
+            <div className="flex justify-between items-center text-sm">
+              <span className="text-on-surface-variant flex items-center gap-2">
+                <span className="material-symbols-outlined text-[20px]">schedule</span> Schedule
+              </span>
+              <span className="font-semibold">Now</span>
+            </div>
+          </div>
+          <div className="pt-4 space-y-3 hidden lg:block">
+            <button
+              type="button"
+              onClick={() => handleSubmit(true)}
+              disabled={submitting}
+              className="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-xl shadow-lg shadow-primary/20 hover:shadow-xl hover:-translate-y-0.5 active:scale-95 transition-all disabled:opacity-50"
+            >
+              {submitting ? "Saving..." : post ? "Update Post" : "Publish Post"}
+            </button>
+            <button
+              type="button"
+              onClick={() => handleSubmit(false)}
+              disabled={submitting}
+              className="w-full border border-outline-variant text-on-surface-variant font-label-md text-label-md py-3 rounded-xl hover:bg-surface-container transition-colors disabled:opacity-50"
+            >
+              {submitting ? "Saving..." : post ? "Save as Draft" : "Save as Draft"}
+            </button>
           </div>
         </div>
       </aside>

@@ -4,6 +4,7 @@ import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { syncKindeUser } from "@/lib/auth/sync-user";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { DeleteButton } from "@/components/general/DeleteButton";
+import { DashboardMobileNav } from "@/components/general/DashboardMobileNav";
 
 export const dynamic = "force-dynamic";
 
@@ -63,9 +64,9 @@ export default async function DashboardRoute() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-surface-bright/50">
+    <div className="min-h-screen bg-surface-bright/50 w-full">
       {/* Dashboard Layout */}
-      <div className="flex flex-1 max-w-container-max mx-auto w-full">
+      <div className="flex flex-1 max-w-container-max mx-auto w-full min-h-screen">
         {/* Left Sidebar (Desktop) */}
         <aside className="hidden md:flex flex-col w-64 border-r border-outline-variant/20 p-6 sticky top-16 h-[calc(100vh-64px)] overflow-y-auto">
           <div className="space-y-8">
@@ -117,7 +118,8 @@ export default async function DashboardRoute() {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-6 md:p-8">
+        <main className="flex-1 min-w-0 w-full p-4 sm:p-6 md:p-8">
+          <DashboardMobileNav userId={localUser.id} isAdmin={localUser.role === "ADMIN"} />
           {/* Header */}
           <header className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
             <div>
@@ -198,7 +200,7 @@ export default async function DashboardRoute() {
                                 </div>
                               )}
                             </div>
-                            <span className="text-body-md font-bold text-on-surface max-w-[300px] truncate block">{post.title}</span>
+                            <span className="text-body-md font-bold text-on-surface max-w-[120px] xs:max-w-[200px] sm:max-w-[300px] truncate block">{post.title}</span>
                           </div>
                         </td>
                         <td className="px-6 py-5">

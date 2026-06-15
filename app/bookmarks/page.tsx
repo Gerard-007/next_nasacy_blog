@@ -4,6 +4,7 @@ import { syncKindeUser } from "@/lib/auth/sync-user";
 import Link from "next/link";
 import Image from "next/image";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { DashboardMobileNav } from "@/components/general/DashboardMobileNav";
 
 export const dynamic = "force-dynamic";
 
@@ -53,8 +54,8 @@ export default async function BookmarksPage() {
   });
 
   return (
-    <div className="min-h-screen flex flex-col bg-surface-bright/50">
-      <div className="flex flex-1 max-w-container-max mx-auto w-full">
+    <div className="min-h-screen bg-surface-bright/50 w-full">
+      <div className="flex flex-1 max-w-container-max mx-auto w-full min-h-screen">
         {/* Left Sidebar (Desktop) */}
         <aside className="hidden md:flex flex-col w-64 border-r border-outline-variant/20 p-6 sticky top-16 h-[calc(100vh-64px)] overflow-y-auto">
           <div className="space-y-8">
@@ -105,7 +106,8 @@ export default async function BookmarksPage() {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-6 md:p-8">
+        <main className="flex-1 min-w-0 w-full p-4 sm:p-6 md:p-8">
+          <DashboardMobileNav userId={localUser.id} isAdmin={localUser.role === "ADMIN"} />
           <header className="mb-10">
             <h1 className="text-headline-md font-headline-md text-on-surface mb-2">Curated Bookmarks</h1>
             <p className="text-body-md text-on-surface-variant">Your personally saved insights and articles.</p>
@@ -156,7 +158,7 @@ export default async function BookmarksPage() {
                                   </div>
                                 )}
                               </div>
-                              <Link href={`/post/${post.slug}`} className="text-body-md font-bold text-on-surface max-w-[300px] truncate block hover:text-primary transition-colors">
+                              <Link href={`/post/${post.slug}`} className="text-body-md font-bold text-on-surface max-w-[120px] xs:max-w-[200px] sm:max-w-[300px] truncate block hover:text-primary transition-colors">
                                 {post.title}
                               </Link>
                             </div>

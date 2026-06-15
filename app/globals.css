@@ -99,6 +99,13 @@
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+  --color-surface-secondary: var(--surface-secondary);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
@@ -121,111 +128,116 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #fcf8ff;
-  --surface: #fcf8ff;
-  --on-background: #1b1b23;
-  --on-surface: #1b1b23;
-  --on-surface-variant: #464554;
-  --outline-color: #767586;
-  --outline-variant-color: #c7c4d7;
-  --surface-bright: #fcf8ff;
-  --surface-container: #efecf8;
-  --surface-container-low: #f5f2fe;
-  --surface-container-lowest: #ffffff;
-  --surface-container-highest: #e4e1ed;
-  --surface-container-high: #e9e6f3;
-  --surface-dim: #dbd8e4;
-  --primary-color: #4648d4;
-  --on-primary-color: #ffffff;
-  --primary-container-color: #6063ee;
-  --on-primary-container-color: #fffbff;
-  --error-color: #ba1a1a;
-  --error-container-color: #ffdad6;
+  
+  /* Custom theme colors - Light */
+  --primary: #0D3B78;
+  --primary-hover: #15509D;
+  --primary-active: #0A2E5D;
 
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --background: #F8FAFC;
+  --surface: #FFFFFF;
+  --surface-secondary: #EEF4FB;
+
+  --text-primary: #111827;
+  --text-secondary: #4B5563;
+
+  --border: #D6E2F1;
+  --accent: #3B82F6;
+
+  --success: #16A34A;
+  --warning: #D97706;
+  --error: #DC2626;
+
+  /* Tailwind/Material Bridges */
+  --primary-color: var(--primary);
+  --on-primary-color: #ffffff;
+  --primary-container-color: var(--primary-hover);
+  --on-primary-container-color: #ffffff;
+  --on-background: var(--text-primary);
+  --on-surface: var(--text-primary);
+  --on-surface-variant: var(--text-secondary);
+  --outline-color: #64748B;
+  --outline-variant-color: var(--border);
+  --surface-bright: var(--surface);
+  --surface-container: var(--surface-secondary);
+  --surface-container-low: var(--surface-secondary);
+  --surface-container-lowest: var(--surface);
+  --surface-container-highest: var(--surface-secondary);
+  --surface-container-high: var(--surface-secondary);
+  --surface-dim: var(--background);
+  --error-color: var(--error);
+  --error-container-color: #fee2e2;
+
+  --foreground: var(--text-primary);
+  --card: var(--surface);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface);
+  --popover-foreground: var(--text-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--surface-secondary);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--surface-secondary);
+  --muted-foreground: var(--text-secondary);
+  --accent-foreground: #ffffff;
+  --destructive: var(--error);
+  --input: var(--border);
+  --ring: var(--primary-hover);
 }
 
 .dark {
-  --background: #121118;
-  --surface: #1b1a23;
-  --on-background: #e4e1ed;
-  --on-surface: #e4e1ed;
-  --on-surface-variant: #c7c4d7;
-  --outline-color: #767586;
-  --outline-variant-color: #464554;
-  --surface-bright: #1f1e27;
-  --surface-container: #25242f;
-  --surface-container-low: #201f29;
-  --surface-container-lowest: #15141c;
-  --surface-container-highest: #302f3c;
-  --surface-container-high: #2b2a36;
-  --surface-dim: #15141c;
-  --primary-color: #c0c1ff;
-  --on-primary-color: #07006c;
-  --primary-container-color: #2f2ebe;
-  --on-primary-container-color: #e1e0ff;
-  --error-color: #ffb4ab;
-  --error-container-color: #93000a;
+  /* Custom theme colors - Dark */
+  --primary: #2E6BC2;
+  --primary-hover: #4A82D5;
+  --primary-active: #2158A8;
 
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #0B1220;
+  --surface: #121A2A;
+  --surface-secondary: #182236;
+
+  --text-primary: #F3F4F6;
+  --text-secondary: #9CA3AF;
+
+  --border: #2A3952;
+  --accent: #60A5FA;
+
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+
+  /* Tailwind/Material Bridges */
+  --primary-color: var(--primary);
+  --on-primary-color: #ffffff;
+  --primary-container-color: var(--primary-hover);
+  --on-primary-container-color: #ffffff;
+  --on-background: var(--text-primary);
+  --on-surface: var(--text-primary);
+  --on-surface-variant: var(--text-secondary);
+  --outline-color: #94A3B8;
+  --outline-variant-color: var(--border);
+  --surface-bright: var(--surface);
+  --surface-container: var(--surface-secondary);
+  --surface-container-low: var(--surface-secondary);
+  --surface-container-lowest: var(--surface);
+  --surface-container-highest: var(--surface-secondary);
+  --surface-container-high: var(--surface-secondary);
+  --surface-dim: var(--background);
+  --error-color: var(--error);
+  --error-container-color: #7f1d1d;
+
+  --foreground: var(--text-primary);
+  --card: var(--surface);
+  --card-foreground: var(--text-primary);
+  --popover: var(--surface);
+  --popover-foreground: var(--text-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--surface-secondary);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--surface-secondary);
+  --muted-foreground: var(--text-secondary);
+  --accent-foreground: #ffffff;
+  --destructive: var(--error);
+  --input: var(--border);
+  --ring: var(--primary-hover);
 }
 
 @layer base {

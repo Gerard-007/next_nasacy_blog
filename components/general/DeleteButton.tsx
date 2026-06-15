@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { deletePost } from "@/app/actions";
 
+import { toast } from "@/components/ui/Toast";
+
 interface DeleteButtonProps {
   postId: string;
 }
@@ -17,9 +19,10 @@ export function DeleteButton({ postId }: DeleteButtonProps) {
     setDeleting(true);
     try {
       await deletePost(postId);
+      toast.success("Post deleted successfully.");
     } catch (error) {
       console.error("Failed to delete post:", error);
-      alert("Failed to delete post. Please try again.");
+      toast.error("Failed to delete post. Please try again.");
     } finally {
       setDeleting(false);
     }

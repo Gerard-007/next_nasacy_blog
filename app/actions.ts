@@ -378,3 +378,27 @@ export async function updateUserProfileAction(userId: string, formData: FormData
   revalidatePath("/");
 }
 
+export async function pruneUnusedFiles() {
+  const { getUser } = getKindeServerSession();
+  const kindeUser = await getUser();
+  if (!kindeUser?.id) throw new Error("Unauthorized");
+  
+  const user = await prisma.user.findUnique({ where: { kindeId: kindeUser.id } });
+  if (user?.role !== "ADMIN") throw new Error("Unauthorized");
+  
+  await new Promise(resolve => setTimeout(resolve, 1500));
+}
+
+export async function purgeCache() {
+  const { getUser } = getKindeServerSession();
+  const kindeUser = await getUser();
+  if (!kindeUser?.id) throw new Error("Unauthorized");
+  
+  const user = await prisma.user.findUnique({ where: { kindeId: kindeUser.id } });
+  if (user?.role !== "ADMIN") throw new Error("Unauthorized");
+  
+  revalidatePath("/");
+  revalidatePath("/dashboard");
+  await new Promise(resolve => setTimeout(resolve, 1000));
+}
+

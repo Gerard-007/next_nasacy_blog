@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { toast } from "@/components/ui/Toast";
+
 interface PostActionsProps {
   postSlug: string;
   postId: string;
@@ -27,7 +29,7 @@ export default function PostActions({
 
   async function handleLike() {
     if (!userId) {
-      alert("Please log in to like posts.");
+      toast.warning("Please log in to like posts.");
       return;
     }
     if (loadingLike) return;
@@ -44,9 +46,11 @@ export default function PostActions({
       if (data.ok) {
         setLiked(!liked);
         setLikes(prev => liked ? prev - 1 : prev + 1);
+        toast.success(liked ? "Post unliked." : "Post liked.");
       }
     } catch (e) {
       console.error(e);
+      toast.error("An error occurred. Please try again.");
     } finally {
       setLoadingLike(false);
     }
@@ -54,7 +58,7 @@ export default function PostActions({
 
   async function handleBookmark() {
     if (!userId) {
-      alert("Please log in to bookmark posts.");
+      toast.warning("Please log in to bookmark posts.");
       return;
     }
     if (loadingBookmark) return;
@@ -70,9 +74,11 @@ export default function PostActions({
       const data = await res.json();
       if (data.ok) {
         setBookmarked(!bookmarked);
+        toast.success(bookmarked ? "Removed from bookmarks." : "Added to bookmarks.");
       }
     } catch (e) {
       console.error(e);
+      toast.error("An error occurred. Please try again.");
     } finally {
       setLoadingBookmark(false);
     }
@@ -86,7 +92,7 @@ export default function PostActions({
       }).catch(console.error);
     } else {
       navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+      toast.success("Link copied to clipboard!");
     }
   }
 

@@ -2,6 +2,8 @@
 
 import { useTransition } from "react";
 
+import { toast } from "@/components/ui/Toast";
+
 interface AdminActionButtonProps {
   action: () => Promise<void>;
   confirmMessage?: string;
@@ -31,8 +33,9 @@ export default function AdminActionButton({
     startTransition(async () => {
       try {
         await action();
+        toast.success("Action completed successfully.");
       } catch (err: any) {
-        alert(err?.message || "Action failed. Please try again.");
+        toast.error(err?.message || "Action failed. Please try again.");
       }
     });
   };

@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   description: "A premium space for industry thought leaders and professional writers to share deep insights on technology and design.",
 };
 
+import { ToastContainer } from "@/components/ui/Toast";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,6 +38,7 @@ export default function RootLayout({
               {children}
             </main>
             <ConditionalFooter />
+            <ToastContainer />
           </AuthProvider>
         </ThemeProvider>
       </body>

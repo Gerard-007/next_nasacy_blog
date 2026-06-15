@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { toast } from "@/components/ui/Toast";
+
 interface FollowAuthorButtonProps {
   authorId: string;
   initialFollowing: boolean;
@@ -18,7 +20,7 @@ export default function FollowAuthorButton({
 
   async function handleFollow() {
     if (!userId) {
-      alert("Please log in to follow authors.");
+      toast.warning("Please log in to follow authors.");
       return;
     }
     if (userId === authorId) return;
@@ -35,9 +37,13 @@ export default function FollowAuthorButton({
       const data = await res.json();
       if (data.ok) {
         setFollowing(!following);
+        toast.success(following ? "Unfollowed author." : "Following author.");
+      } else {
+        toast.error("Failed to follow author.");
       }
     } catch (e) {
       console.error(e);
+      toast.error("An error occurred. Please try again.");
     } finally {
       setLoading(false);
     }

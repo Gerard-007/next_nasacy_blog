@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link";
+import Image from "next/image";
 import { buttonVariants } from "../ui/button";
 import { RegisterLink, LoginLink, LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import ModeToggle from "./ModeToggle";
@@ -51,36 +52,43 @@ export function Navbar() {
 
     return (
         <>
-            <nav className="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 glass-nav border-b border-outline-variant/30 shadow-sm">
+            <nav className="top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 glass-nav border-b border-outline-variant/30 shadow-sm">
                 <div className="relative flex items-center justify-between h-16 px-gutter max-w-container-max mx-auto">
                     {/* Left: Logo */}
-                    <Link href="/" className="text-headline-sm font-headline-sm font-bold text-primary dark:text-primary-fixed tracking-tight active:scale-95 transition-transform">
-                        Nasacy
+                    <Link href="/" className="flex items-center">
+                        <Image
+                            src="/nasacy.png"
+                            alt="Nasacy Logo"
+                            width={1000}
+                            height={700}
+                            className="h-10 md:h-12 w-auto object-contain dark:invert"
+                            priority
+                        />
                     </Link>
 
                     {/* Center: Nav Links */}
                     <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
                         <Link
                             href="/"
-                            className={`text-body-md font-body-md transition-colors duration-200 py-1 ${pathname === "/" ? "text-primary dark:text-primary-fixed font-bold border-b-2 border-primary" : "text-on-surface-variant dark:text-outline hover:text-primary"}`}
+                            className={`text-body-md font-body-md transition-colors duration-200 py-1 ${pathname === "/" ? "text-primary font-bold border-b-2 border-primary" : "text-text-secondary hover:text-primary"}`}
                         >
                             Discover
                         </Link>
                         <Link
                             href="/about"
-                            className={`text-body-md font-body-md transition-colors duration-200 py-1 ${pathname.startsWith("/category") ? "text-primary dark:text-primary-fixed font-bold border-b-2 border-primary" : "text-on-surface-variant dark:text-outline hover:text-primary"}`}
+                            className={`text-body-md font-body-md transition-colors duration-200 py-1 ${pathname === "/about" ? "text-primary font-bold border-b-2 border-primary" : "text-text-secondary hover:text-primary"}`}
                         >
                             About
                         </Link>
                         <Link
                             href="/categories"
-                            className={`text-body-md font-body-md transition-colors duration-200 py-1 ${pathname.startsWith("/category") ? "text-primary dark:text-primary-fixed font-bold border-b-2 border-primary" : "text-on-surface-variant dark:text-outline hover:text-primary"}`}
+                            className={`text-body-md font-body-md transition-colors duration-200 py-1 ${pathname === "/categories" ? "text-primary font-bold border-b-2 border-primary" : "text-text-secondary hover:text-primary"}`}
                         >
                             Topics
                         </Link>
                         <Link
                             href="/contact"
-                            className={`text-body-md font-body-md transition-colors duration-200 py-1 ${pathname.startsWith("/category") ? "text-primary dark:text-primary-fixed font-bold border-b-2 border-primary" : "text-on-surface-variant dark:text-outline hover:text-primary"}`}
+                            className={`text-body-md font-body-md transition-colors duration-200 py-1 ${pathname === "/contact" ? "text-primary font-bold border-b-2 border-primary" : "text-text-secondary hover:text-primary"}`}
                         >
                             Contact
                         </Link>
@@ -202,17 +210,28 @@ export function Navbar() {
                         <span className="font-label-md text-label-md">Home</span>
                     </Link>
                     <Link href="/search" className={`flex flex-col items-center gap-1 active:bg-surface-container-high tap-highlight-transparent ${pathname === "/search" ? "text-primary dark:text-primary-fixed" : "text-on-surface-variant dark:text-outline"}`}>
-                        <span className="material-symbols-outlined">search</span>
+                        <span className="material-symbols-outlined" style={pathname === "/search" ? { fontVariationSettings: "'FILL' 1" } : {}}>search</span>
                         <span className="font-label-md text-label-md">Search</span>
                     </Link>
-                    <Link href="/bookmarks" className={`flex flex-col items-center gap-1 active:bg-surface-container-high tap-highlight-transparent ${pathname === "/bookmarks" ? "text-primary dark:text-primary-fixed" : "text-on-surface-variant dark:text-outline"}`}>
-                        <span className="material-symbols-outlined">bookmarks</span>
-                        <span className="font-label-md text-label-md">Library</span>
+                    <Link href="/about" className={`flex flex-col items-center gap-1 active:bg-surface-container-high tap-highlight-transparent ${pathname === "/about" ? "text-primary dark:text-primary-fixed" : "text-on-surface-variant dark:text-outline"}`}>
+                        <span className="material-symbols-outlined" style={pathname === "/about" ? { fontVariationSettings: "'FILL' 1" } : {}}>business_center</span>
+                        <span className="font-label-md text-label-md">About</span>
                     </Link>
-                    <Link href={user ? "/dashboard" : "/"} className={`flex flex-col items-center gap-1 active:bg-surface-container-high tap-highlight-transparent ${pathname === "/dashboard" ? "text-primary dark:text-primary-fixed" : "text-on-surface-variant dark:text-outline"}`}>
-                        <span className="material-symbols-outlined">{user ? "person" : "login"}</span>
-                        <span className="font-label-md text-label-md">{user ? "Profile" : "Sign In"}</span>
+                    <Link href="/contact" className={`flex flex-col items-center gap-1 active:bg-surface-container-high tap-highlight-transparent ${pathname === "/contact" ? "text-primary dark:text-primary-fixed" : "text-on-surface-variant dark:text-outline"}`}>
+                        <span className="material-symbols-outlined" style={pathname === "/contact" ? { fontVariationSettings: "'FILL' 1" } : {}}>mail</span>
+                        <span className="font-label-md text-label-md">Contact</span>
                     </Link>
+                    {/* {user ? (
+                        <Link href="/dashboard" className={`flex flex-col items-center gap-1 active:bg-surface-container-high tap-highlight-transparent ${pathname.startsWith("/dashboard") || pathname.startsWith("/profile") ? "text-primary dark:text-primary-fixed" : "text-on-surface-variant dark:text-outline"}`}>
+                            <span className="material-symbols-outlined" style={pathname.startsWith("/dashboard") || pathname.startsWith("/profile") ? { fontVariationSettings: "'FILL' 1" } : {}}>person</span>
+                            <span className="font-label-md text-label-md">Profile</span>
+                        </Link>
+                    ) : (
+                        <LoginLink className="flex flex-col items-center gap-1 active:bg-surface-container-high tap-highlight-transparent text-on-surface-variant dark:text-outline">
+                            <span className="material-symbols-outlined">login</span>
+                            <span className="font-label-md text-label-md">Sign In</span>
+                        </LoginLink>
+                    )} */}
                 </div>
             </nav>
         </>
