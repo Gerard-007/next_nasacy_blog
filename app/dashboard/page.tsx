@@ -108,13 +108,15 @@ export default async function DashboardRoute() {
             </div>
           </div>
           {/* Upgrade Promo */}
-          <div className="mt-auto pt-8">
+          {/* <div className="mt-auto pt-8">
             <div className="bg-primary-fixed text-on-primary-fixed p-4 rounded-2xl">
               <p className="font-label-md text-label-md mb-2">PRO PLAN</p>
               <p className="text-body-md font-bold mb-3">Unlock deeper audience insights</p>
-              <button className="w-full bg-primary text-white py-2 rounded-xl text-sm font-bold hover:shadow-md transition-all">Upgrade Now</button>
+              <button className="w-full bg-primary text-white py-2 rounded-xl text-sm font-bold hover:shadow-md transition-all">
+                Upgrade Now
+              </button>
             </div>
-          </div>
+          </div> */}
         </aside>
 
         {/* Main Content */}

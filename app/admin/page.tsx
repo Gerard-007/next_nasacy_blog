@@ -16,6 +16,7 @@ import {
   purgeCache,
 } from "@/app/actions";
 import AdminActionButton from "@/components/admin/AdminActionButton";
+import { DashboardMobileNav } from "@/components/general/DashboardMobileNav";
 
 export const dynamic = "force-dynamic";
 
@@ -118,7 +119,7 @@ export default async function AdminPage({
   return (
     <div className="min-h-screen flex overflow-hidden bg-background">
       {/* Sidebar */}
-      <aside className="w-64 border-r border-outline-variant/30 flex-shrink-0 flex flex-col bg-surface-container-lowest z-30">
+      <aside className="hidden md:flex w-64 border-r border-outline-variant/30 flex-shrink-0 flex-col bg-surface-container-lowest z-30">
         <div className="h-16 flex items-center px-6 mb-4">
           <span className="text-headline-sm font-headline-sm font-bold text-primary tracking-tight">Nasacy Admin</span>
         </div>
@@ -216,16 +217,17 @@ export default async function AdminPage({
 
       {/* Main Content */}
       <main className="flex-1 flex flex-col overflow-hidden">
+        <DashboardMobileNav userId={user.id} isAdmin={true} />
         {/* Top App Bar */}
-        <header className="h-16 flex items-center justify-between px-gutter bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 sticky top-0 z-20">
-          <h1 className="text-headline-sm font-headline-sm font-bold text-on-surface capitalize">
+        <header className="h-16 flex items-center justify-between px-4 sm:px-6 md:px-8 bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 sticky top-0 z-20">
+          <h1 className="text-[16px] sm:text-headline-sm font-headline-sm font-bold text-on-surface capitalize">
             {tab === "overview" ? "Dashboard" : tab.replace("-", " ")}
           </h1>
-          <div className="flex items-center gap-4">
-            <div className="relative">
+          <div className="flex items-center gap-2 sm:gap-4">
+            <div className="relative hidden sm:block">
               <span className="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
               <input
-                className="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-body-md font-body-md w-64 focus:ring-2 focus:ring-primary/20 transition-all"
+                className="pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full text-body-md font-body-md w-48 lg:w-64 focus:ring-2 focus:ring-primary/20 transition-all"
                 placeholder="Global search..."
                 type="text"
               />
@@ -240,7 +242,7 @@ export default async function AdminPage({
         </header>
 
         {/* Content Canvas */}
-        <div className="flex-1 overflow-y-auto no-scrollbar p-gutter space-y-gutter pb-16">
+        <div className="flex-1 overflow-y-auto no-scrollbar p-4 sm:p-6 md:p-8 space-y-6 md:space-y-gutter pb-16">
           {/* Quick Stats Section */}
           <section className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <div className="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 shadow-sm flex flex-col gap-2">
@@ -904,9 +906,9 @@ export default async function AdminPage({
         </div>
 
         {/* Footer */}
-        <footer className="h-12 flex items-center justify-between px-gutter border-t border-outline-variant/20 bg-surface-container-lowest text-outline font-caption text-caption">
-          <span>© 2026 InsightHub Admin Interface. All rights reserved.</span>
-          <div className="flex gap-4">
+        <footer className="h-12 flex items-center justify-between px-4 sm:px-6 md:px-8 border-t border-outline-variant/20 bg-surface-container-lowest text-outline font-caption text-caption">
+          <span>© 2026 InsightHub Admin Interface</span>
+          <div className="hidden sm:flex gap-4">
             <Link className="hover:text-primary transition-colors" href="#">
               Documentation
             </Link>
