@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function AboutPage() {
   return (
-    <div className="pt-16">
+    <div className="pt-8">
       {/* Hero Section */}
       <section className="relative overflow-hidden py-24 md:py-32">
         <div className="relative z-10 max-w-container-max mx-auto px-gutter text-center">
@@ -22,7 +22,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-20 bg-surface-container-lowest">
+      <section className="py15 bg-surface-container-lowest">
         <div className="max-w-content-max mx-auto px-gutter">
           <h2 className="font-headline-md text-headline-md mb-8 text-center">
             Our Story

@@ -1,8 +1,51 @@
 import Image from "next/image";
 import Link from "next/link";
 
+interface AuthorData {
+  id: string;
+  name: string | null;
+  imageUrl: string | null;
+}
+
+interface CategoryData {
+  id: string;
+  name: string;
+  slug: string;
+  description: string | null;
+}
+
+interface PostCategoryData {
+  id: string;
+  postId: string;
+  categoryId: string;
+  category: CategoryData;
+}
+
+interface CountData {
+  comments: number;
+  likes: number;
+}
+
+export interface BlogPostCardData {
+  id: string;
+  title: string;
+  slug: string;
+  excerpt: string | null;
+  content: string;
+  imageUrl: string | null;
+  published: boolean;
+  featured: boolean;
+  viewCount: number;
+  authorId: string;
+  createdAt: Date;
+  updatedAt: Date;
+  author: AuthorData;
+  categories: PostCategoryData[];
+  _count: CountData;
+}
+
 interface BlogPostCardProps {
-  data: any;
+  data: BlogPostCardData;
   featured?: boolean;
 }
 

@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import BlogPostCard from "./BlogPostCard";
+import BlogPostCard, { type BlogPostCardData } from "./BlogPostCard";
 
 interface HomePostTabsProps {
-  latestPosts: any[];
-  topPosts: any[];
+  latestPosts: BlogPostCardData[];
+  topPosts: BlogPostCardData[];
 }
 
 export default function HomePostTabs({ latestPosts, topPosts }: HomePostTabsProps) {

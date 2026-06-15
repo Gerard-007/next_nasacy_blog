@@ -12,6 +12,8 @@ export default withAuth(
     // Public paths: guests can access these
     publicPaths: [
       "/",
+      "/about",
+      "/contact",
       "/post",
       "/category",
       "/categories",
