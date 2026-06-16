@@ -17,6 +17,7 @@ import {
 } from "@/app/actions";
 import AdminActionButton from "@/components/admin/AdminActionButton";
 import { DashboardMobileNav } from "@/components/general/DashboardMobileNav";
+import CategoryManager from "@/components/admin/CategoryManager";
 
 export const dynamic = "force-dynamic";
 
@@ -66,6 +67,7 @@ export default async function AdminPage({
   let usersList: any[] = [];
   let postsList: any[] = [];
   let reportsList: any[] = [];
+  let categoriesList: any[] = [];
 
   if (tab === "overview") {
     usersList = await prisma.user.findMany({
@@ -103,6 +105,10 @@ export default async function AdminPage({
         post: { select: { title: true, id: true } },
         comment: { select: { content: true, id: true } },
       },
+    });
+  } else if (tab === "categories") {
+    categoriesList = await prisma.category.findMany({
+      orderBy: { createdAt: "desc" },
     });
   }
 
@@ -167,6 +173,17 @@ export default async function AdminPage({
           >
             <span className="material-symbols-outlined">report</span>
             <span className="font-label-md text-label-md">Reports</span>
+          </Link>
+          <Link
+            href="/admin?tab=categories"
+            className={`flex items-center gap-3 px-4 py-3 transition-all duration-200 ${
+              tab === "categories"
+                ? "bg-primary-container text-on-primary-container rounded-xl"
+                : "text-on-surface-variant hover:bg-surface-container-high rounded-xl"
+            }`}
+          >
+            <span className="material-symbols-outlined">category</span>
+            <span className="font-label-md text-label-md">Categories</span>
           </Link>
           {/* <Link
             href="/admin?tab=settings"
@@ -811,6 +828,11 @@ className="flex items-center justify-between p-4 hover:bg-surface-container-low/
             </section>
           )}
 
+          {/* CATEGORIES TAB */}
+          {tab === "categories" && (
+            <CategoryManager categories={categoriesList} />
+          )}
+
           {/* SYSTEM SETTINGS TAB */}
           {tab === "settings" && (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
@@ -822,7 +844,7 @@ className="flex items-center justify-between p-4 hover:bg-surface-container-low/
                     <label className="block text-body-md font-bold text-on-surface-variant mb-2">Blog Name</label>
                     <input
                       type="text"
-                      defaultValue="InsightHub"
+                      defaultValue="Nasacy"
                       disabled
                       className="w-full bg-surface-container-low border-none rounded-xl p-3 text-body-md text-on-surface outline-none cursor-not-allowed opacity-75"
                     />
@@ -907,7 +929,7 @@ className="flex items-center justify-between p-4 hover:bg-surface-container-low/
 
         {/* Footer */}
         <footer className="h-12 flex items-center justify-between px-4 sm:px-6 md:px-8 border-t border-outline-variant/20 bg-surface-container-lowest text-outline font-caption text-caption">
-          <span>© 2026 InsightHub Admin Interface</span>
+          <span>© 2026 Nasacy Admin Interface</span>
           <div className="hidden sm:flex gap-4">
             <Link className="hover:text-primary transition-colors" href="#">
               Documentation

@@ -330,7 +330,7 @@ export async function adminDeleteComment(commentId: string) {
   revalidatePath("/admin");
 }
 
-export async function createCategoryAction(name: string) {
+export async function createCategoryAction(name: string, imageUrl?: string) {
   const admin = await verifyAdmin();
   if (!admin) throw new Error("Unauthorized");
 
@@ -344,11 +344,38 @@ export async function createCategoryAction(name: string) {
   }
 
   const cat = await prisma.category.create({
-    data: { name, slug }
+    data: { name, slug, imageUrl: imageUrl || null }
   });
 
   revalidatePath("/dashboard/create");
+  revalidatePath("/admin");
   return cat;
+}
+
+export async function updateCategoryAction(id: string, name: string, imageUrl?: string) {
+  await verifyAdmin();
+  const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  const existing = await prisma.category.findFirst({
+    where: { slug, NOT: { id } }
+  });
+  if (existing) throw new Error("Another category with this name already exists");
+  const cat = await prisma.category.update({
+    where: { id },
+    data: { name, slug, imageUrl: imageUrl || null }
+  });
+  revalidatePath("/dashboard/create");
+  revalidatePath("/admin");
+  revalidatePath("/categories");
+  return cat;
+}
+
+export async function deleteCategoryAction(id: string) {
+  await verifyAdmin();
+  await prisma.postCategory.deleteMany({ where: { categoryId: id } });
+  await prisma.category.delete({ where: { id } });
+  revalidatePath("/dashboard/create");
+  revalidatePath("/admin");
+  revalidatePath("/categories");
 }
 
 export async function updateUserProfileAction(userId: string, formData: FormData) {

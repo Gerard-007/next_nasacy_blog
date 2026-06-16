@@ -65,7 +65,9 @@ export default async function PostBySlug({ params }: { params: Promise<{ slug: s
     where: { published: true, id: { not: post.id } },
     take: 2,
     orderBy: { createdAt: "desc" },
-    select: { slug: true, title: true, imageUrl: true, createdAt: true },
+    include: {
+      categories: { include: { category: { select: { imageUrl: true } } } },
+    },
   });
 
   return (
@@ -73,11 +75,12 @@ export default async function PostBySlug({ params }: { params: Promise<{ slug: s
       {/* Hero Header */}
       <header className="w-full mb-16">
         <div className="max-w-container-max mx-auto px-gutter md:mt-12">
-          {post.imageUrl && (
+          {(post.imageUrl || post.categories?.[0]?.category?.imageUrl) && (
             <div className="relative w-full aspect-[21/9] rounded-xl overflow-hidden shadow-sm mb-12">
-              <Image src={post.imageUrl} alt={post.title} fill className="object-cover" priority />
+              <Image src={post.imageUrl || post.categories?.[0]?.category?.imageUrl || ""} alt={post.title} fill className="object-cover" priority />
             </div>
           )}
+
           <div className="max-w-content-max mx-auto text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-3 mb-6">
               {post.categories?.[0] && (
@@ -177,8 +180,8 @@ export default async function PostBySlug({ params }: { params: Promise<{ slug: s
                 {relatedPosts.map((rp) => (
                   <Link key={rp.slug} href={`/post/${rp.slug}`} className="group cursor-pointer">
                     <div className="aspect-video rounded-xl overflow-hidden mb-4 shadow-sm group-hover:shadow-md transition-shadow bg-surface-container-highest">
-                      {rp.imageUrl && (
-                        <Image src={rp.imageUrl} alt={rp.title} width={640} height={360} className="w-full h-full object-cover" />
+                      {(rp.imageUrl || rp.categories?.[0]?.category?.imageUrl) && (
+                        <Image src={rp.imageUrl || rp.categories?.[0]?.category?.imageUrl || ""} alt={rp.title} width={640} height={360} className="w-full h-full object-cover" />
                       )}
                     </div>
                     <h4 className="text-headline-sm font-headline-sm text-on-surface group-hover:text-primary transition-colors">{rp.title}</h4>

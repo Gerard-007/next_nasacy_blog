@@ -142,9 +142,9 @@ export default async function SearchPage({ searchParams }: { searchParams?: Prom
                           <span className="text-outline text-caption font-caption">{readTime} min read</span>
                         </div>
                       </div>
-                      {post.imageUrl && (
+                      {(post.imageUrl || post.categories?.[0]?.category?.imageUrl) && (
                         <div className="w-full md:w-48 h-32 shrink-0 overflow-hidden rounded-xl bg-surface-container-highest">
-                          <Image src={post.imageUrl} alt={post.title} width={192} height={128} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                          <Image src={post.imageUrl || post.categories?.[0]?.category?.imageUrl || ""} alt={post.title} width={192} height={128} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                         </div>
                       )}
                     </div>

@@ -194,8 +194,8 @@ export default async function DashboardRoute() {
                         <td className="px-6 py-5">
                           <div className="flex items-center gap-4">
                             <div className="w-12 h-12 rounded-lg bg-surface-container-highest overflow-hidden flex-shrink-0 border border-outline-variant/20">
-                              {post.imageUrl ? (
-                                <img className="w-full h-full object-cover" alt={post.title} src={post.imageUrl} />
+                              {(post.imageUrl || post.categories?.[0]?.category?.imageUrl) ? (
+                                <img className="w-full h-full object-cover" alt={post.title} src={post.imageUrl || post.categories?.[0]?.category?.imageUrl || ""} />
                               ) : (
                                 <div className="w-full h-full flex items-center justify-center bg-primary/10 text-primary">
                                   <span className="material-symbols-outlined text-[24px]">image</span>

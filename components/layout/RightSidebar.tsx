@@ -54,7 +54,7 @@ export default async function RightSidebar() {
         <div className="relative z-10">
           <span className="material-symbols-outlined text-3xl mb-3 block">mail</span>
           <h4 className="text-headline-sm font-headline-sm mb-2">Weekly Digest</h4>
-          <p className="text-body-md font-body-md opacity-90 mb-6">Get the best of InsightHub delivered to your inbox.</p>
+          <p className="text-body-md font-body-md opacity-90 mb-6">Get the best of Nasacy delivered to your inbox.</p>
           <button className="w-full bg-on-primary text-primary py-3 rounded-xl font-label-md text-label-md hover:bg-surface-bright active:scale-95 transition-all">
             Subscribe
           </button>

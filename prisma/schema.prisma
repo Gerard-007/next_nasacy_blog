@@ -75,14 +75,15 @@ model BlogPost {
 }
 
 model Category {
-  id         String         @id @default(uuid())
-  name       String
-  slug       String         @unique
+  id          String         @id @default(uuid())
+  name        String
+  slug        String         @unique
   description String?
+  imageUrl    String?
 
-  posts      PostCategory[]
+  posts       PostCategory[]
 
-  createdAt  DateTime       @default(now())
+  createdAt   DateTime       @default(now())
 
   @@map("categories")
 }

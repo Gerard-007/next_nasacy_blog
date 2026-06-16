@@ -45,9 +45,9 @@ export function Navbar() {
     }, [user]);
 
     const navLinks = [
-        { href: "/", label: "Discover", active: pathname === "/" },
+        { href: "/", label: "Home", active: pathname === "/" },
         { href: "/categories", label: "Writers" },
-        { href: "/categories", label: "Topics" },
+        { href: "/categories", label: "Categories" },
     ];
 
     return (
@@ -59,9 +59,9 @@ export function Navbar() {
                         <Image
                             src="/nasacy.png"
                             alt="Nasacy Logo"
-                            width={1000}
-                            height={700}
-                            className="h-10 md:h-12 w-auto object-contain dark:invert"
+                            width={100}
+                            height={50}
+                            className="h-25 md:h-27 w-auto object-contain dark:invert mt-7"
                             priority
                         />
                     </Link>
@@ -72,7 +72,7 @@ export function Navbar() {
                             href="/"
                             className={`text-body-md font-body-md transition-colors duration-200 py-1 ${pathname === "/" ? "text-primary font-bold border-b-2 border-primary" : "text-text-secondary hover:text-primary"}`}
                         >
-                            Discover
+                            Home
                         </Link>
                         <Link
                             href="/about"
@@ -84,7 +84,7 @@ export function Navbar() {
                             href="/categories"
                             className={`text-body-md font-body-md transition-colors duration-200 py-1 ${pathname === "/categories" ? "text-primary font-bold border-b-2 border-primary" : "text-text-secondary hover:text-primary"}`}
                         >
-                            Topics
+                            Categories
                         </Link>
                         <Link
                             href="/contact"

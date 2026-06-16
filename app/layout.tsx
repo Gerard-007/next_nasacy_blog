@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ConditionalFooter } from "@/components/general/ConditionalFooter";
 
 export const metadata: Metadata = {
-  title: "InsightHub | The Future of Thought",
+  title: "Nasacy",
   description: "A premium space for industry thought leaders and professional writers to share deep insights on technology and design.",
 };
 

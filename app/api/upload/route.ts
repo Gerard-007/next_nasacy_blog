@@ -21,6 +21,7 @@ export async function POST(req: NextRequest) {
   try {
     const formData = await req.formData();
     const file = formData.get("file") as File | null;
+    const folder = (formData.get("folder") as string) || "insighthub/misc";
 
     if (!file) {
       return NextResponse.json({ ok: false, error: "No file provided" }, { status: 400 });
@@ -30,7 +31,6 @@ export async function POST(req: NextRequest) {
     const apiKey = getRequiredEnv("CLOUDINARY_API_KEY");
     const apiSecret = getRequiredEnv("CLOUDINARY_API_SECRET");
     const timestamp = Math.round(Date.now() / 1000);
-    const folder = "insighthub/posts";
     const params = { folder, timestamp };
     const signature = signCloudinaryParams(params, apiSecret);
 

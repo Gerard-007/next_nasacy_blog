@@ -12,6 +12,7 @@ interface CategoryData {
   name: string;
   slug: string;
   description: string | null;
+  imageUrl: string | null;
 }
 
 interface PostCategoryData {
@@ -59,7 +60,7 @@ export default function BlogPostCard({ data, featured = false }: BlogPostCardPro
         <div className="grid grid-cols-1 lg:grid-cols-2">
           <div className="relative aspect-video lg:aspect-auto lg:h-[480px] overflow-hidden">
             <Image
-              src={data.imageUrl ?? "/placeholder.png"}
+              src={data.imageUrl || data.categories?.[0]?.category?.imageUrl || "/placeholder.png"}
               alt={data.title}
               fill
               className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -115,11 +116,11 @@ export default function BlogPostCard({ data, featured = false }: BlogPostCardPro
 
   return (
     <article className="group rounded-xl bg-surface-container-lowest border border-outline-variant/30 shadow-sm overflow-hidden transition-all duration-300 hover:shadow-md flex flex-col">
-      {data.imageUrl && (
+      {(data.imageUrl || data.categories?.[0]?.category?.imageUrl) && (
         <Link href={`/post/${data.slug}`}>
           <div className="aspect-video overflow-hidden">
             <Image
-              src={data.imageUrl}
+              src={data.imageUrl || data.categories?.[0]?.category?.imageUrl || ""}
               alt={data.title}
               width={640}
               height={360}

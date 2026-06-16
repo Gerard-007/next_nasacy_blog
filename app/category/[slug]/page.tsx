@@ -81,9 +81,9 @@ export default async function CategoryPage({ params }: { params: Promise<{ slug:
               posts.map((post, idx) => (
                 <Link key={post.id} href={`/post/${post.slug}`} className={`group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm hover:shadow-md transition-shadow ${idx === 0 ? "md:col-span-2 flex flex-col md:flex-row" : ""}`}>
                   <div className={idx === 0 ? "md:w-3/5 overflow-hidden" : "h-64 overflow-hidden relative"}>
-                    {post.imageUrl ? (
+                    {(post.imageUrl || post.categories?.[0]?.category?.imageUrl) ? (
                       <Image
-                        src={post.imageUrl}
+                        src={post.imageUrl || post.categories?.[0]?.category?.imageUrl || ""}
                         alt={post.title}
                         width={idx === 0 ? 800 : 640}
                         height={idx === 0 ? 480 : 360}

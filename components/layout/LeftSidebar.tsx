@@ -8,7 +8,7 @@ export default async function LeftSidebar() {
           <span className="material-symbols-outlined text-primary">auto_awesome</span>
         </div>
         <div>
-          <p className="text-headline-sm font-headline-sm font-bold text-primary leading-none">InsightHub</p>
+          <p className="text-headline-sm font-headline-sm font-bold text-primary leading-none">Nasacy</p>
           <p className="text-caption text-on-surface-variant">Curated thinking</p>
         </div>
       </div>

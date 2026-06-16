@@ -30,6 +30,8 @@ export default function ProfileTabs({
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [uploadingImg, setUploadingImg] = useState(false);
+  const [uploadingBanner, setUploadingBanner] = useState(false);
 
   // Form states for profile fields
   const [profileName, setProfileName] = useState(name ?? "");
@@ -37,6 +39,33 @@ export default function ProfileTabs({
   const [profileBanner, setProfileBanner] = useState(bannerUrl ?? "");
   const [profileGender, setProfileGender] = useState(gender ?? "");
   const [profileBio, setProfileBio] = useState(aboutMe ?? "");
+
+  async function uploadFile(file: File, folder: string): Promise<string> {
+    const formData = new FormData();
+    formData.set("file", file);
+    formData.set("folder", folder);
+    const res = await fetch("/api/upload", { method: "POST", body: formData });
+    const data = await res.json();
+    if (!data.ok) throw new Error(data.error);
+    return data.url;
+  }
+
+  async function handleImageUpload(e: React.ChangeEvent<HTMLInputElement>, type: "avatar" | "banner") {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const setter = type === "avatar" ? setUploadingImg : setUploadingBanner;
+    setter(true);
+    setError(null);
+    try {
+      const url = await uploadFile(file, "insighthub/profiles");
+      if (type === "avatar") setProfileImg(url);
+      else setProfileBanner(url);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setter(false);
+    }
+  }
 
   async function handleUpdateProfile(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -129,10 +158,10 @@ export default function ProfileTabs({
                   className="group bg-surface-container-lowest rounded-xl p-6 border border-outline-variant/20 shadow-sm hover:shadow-md transition-shadow block"
                 >
                   <div className="flex flex-col md:flex-row gap-6">
-                    {post.imageUrl ? (
+                    {(post.imageUrl || post.categories?.[0]?.category?.imageUrl) ? (
                       <div className="w-full md:w-48 h-32 rounded-lg overflow-hidden shrink-0 relative">
                         <Image
-                          src={post.imageUrl}
+                          src={post.imageUrl || post.categories?.[0]?.category?.imageUrl || ""}
                           alt={post.title}
                           fill
                           className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -249,25 +278,35 @@ export default function ProfileTabs({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block font-label-md text-label-md text-on-surface-variant mb-2">Profile Image URL</label>
+                <label className="block font-label-md text-label-md text-on-surface-variant mb-2">Profile Image</label>
                 <input
-                  type="url"
-                  value={profileImg}
-                  onChange={(e) => setProfileImg(e.target.value)}
-                  className="w-full bg-surface-container border border-outline-variant/50 rounded-xl px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-colors text-body-md"
-                  placeholder="https://example.com/avatar.jpg"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => handleImageUpload(e, "avatar")}
+                  className="w-full text-body-md text-on-surface file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-primary file:text-on-primary file:font-label-md file:text-label-md file:cursor-pointer hover:file:bg-primary/90"
                 />
+                {uploadingImg && <p className="text-caption text-outline mt-2">Uploading image...</p>}
+                {profileImg && (
+                  <div className="relative w-20 h-20 mt-3 rounded-full overflow-hidden border border-outline-variant/20">
+                    <Image src={profileImg} alt="Profile preview" fill className="object-cover" />
+                  </div>
+                )}
               </div>
 
               <div>
-                <label className="block font-label-md text-label-md text-on-surface-variant mb-2">Profile Banner URL</label>
+                <label className="block font-label-md text-label-md text-on-surface-variant mb-2">Profile Banner</label>
                 <input
-                  type="url"
-                  value={profileBanner}
-                  onChange={(e) => setProfileBanner(e.target.value)}
-                  className="w-full bg-surface-container border border-outline-variant/50 rounded-xl px-4 py-3 text-on-surface focus:outline-none focus:border-primary transition-colors text-body-md"
-                  placeholder="https://example.com/banner.jpg"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => handleImageUpload(e, "banner")}
+                  className="w-full text-body-md text-on-surface file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:bg-primary file:text-on-primary file:font-label-md file:text-label-md file:cursor-pointer hover:file:bg-primary/90"
                 />
+                {uploadingBanner && <p className="text-caption text-outline mt-2">Uploading banner...</p>}
+                {profileBanner && (
+                  <div className="relative w-full h-20 mt-3 rounded-xl overflow-hidden border border-outline-variant/20">
+                    <Image src={profileBanner} alt="Banner preview" fill className="object-cover" />
+                  </div>
+                )}
               </div>
             </div>
 
